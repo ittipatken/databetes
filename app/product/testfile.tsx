@@ -1,4 +1,4 @@
-export default function Wallet() {
+export default function product() {
     return(
         <>
         <h1>Pay_history</h1>

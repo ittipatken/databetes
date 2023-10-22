@@ -4,12 +4,12 @@ import React from "react";
 const GoHome = () => {
     return (
       <div>
-        <Link href="/wallet">
+        <Link href="/homepage">
           <button
             className="btn btn-outline btn-error mx-7"
             onClick={() => console.log("Click")}
           >
-            Add Product
+            Home
           </button>
         </Link>
       </div>

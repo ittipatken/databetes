@@ -1,4 +1,5 @@
-import GoHome from "./returnhomefunction";
+"use client";
+import GoHome from "./Returnhome";
 import React from "react";
 const Buttontohome = () => {
   return (
@@ -6,5 +7,5 @@ const Buttontohome = () => {
       <GoHome />
     </div>
   );
-}
+};
 export default Buttontohome;

@@ -4,7 +4,7 @@ import styles from "./ProductCard.module.css";
 
 const Productcard = () => {
   return (
-    <div className="p-5 my-5 bg-rose-300 text-white text-xl hover:bg-rose-400">
+    <div>
       <AddToCart />
     </div>
   );

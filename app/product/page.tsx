@@ -1,15 +1,13 @@
-import Kaneinput1 from "@/component/Kaneinput1";
-
+import Kaneinput1 from "@/components/Kcomponent/Kaneinput1";
+import Link from "next/link";
+import React from "react";
 import Letter from "@/components/Letter";
-
-export default function Product() {
+import Buttontohome from "@/components/Kcomponent/buttontohome";
+export default function Kcomponent() {
     return (
     <>
-      <h1>Pay_history</h1>
-      <p>transfer to B: 11111 bulb</p>
-      <div className="mx-96">
+        <Buttontohome />
         <Letter />
-      </div>
     </>
   );
 }

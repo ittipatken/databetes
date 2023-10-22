@@ -4,7 +4,7 @@ export default function Letter() {
             <div className="place-content-center">
                 <div className="place-content-center">
                     <label
-                        htmlFor="ชื่อสินค้า" 
+                        htmlFor="ชื่อสินค้า"
                         className="place-content-center  relative block rounded-md border border-gray-200 shadow-sm focus-within:border-blue-600 focus-within:ring-1 focus-within:ring-blue-600"
                     >
                         <input
@@ -19,7 +19,8 @@ export default function Letter() {
                         >
                             ชื่อสินค้า
                         </span>
-                    </label></div>
+                    </label>
+                </div>
             </div>
         </>
     )

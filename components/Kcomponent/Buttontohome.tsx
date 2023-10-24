@@ -1,4 +1,5 @@
-"use client";
+"use client"
+
 import GoHome from "./Returnhome";
 import React from "react";
 const Buttontohome = () => {

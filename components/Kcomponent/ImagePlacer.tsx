@@ -3,6 +3,10 @@ import samplepImage from 'public/sample-image.jpg';
 
 export default function ImagePlacer() {
     return (
-        <Image alt="Sample Image" src={samplepImage} />
+        <Image alt="Sample Image" 
+        src={samplepImage} 
+        width={500}
+        height={500}/>
+        
     );
 }

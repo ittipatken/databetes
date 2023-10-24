@@ -1,4 +1,5 @@
 "use client";
+
 import Link from "next/link";
 import React from "react";
 
@@ -15,6 +16,6 @@ const AddToCart = () => {
       </Link>
     </div>
   );
-};
+}
 
 export default AddToCart;

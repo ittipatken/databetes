@@ -8,6 +8,6 @@ const Productcard = () => {
       <AddToCart />
     </div>
   );
-};
+}
 
 export default Productcard;

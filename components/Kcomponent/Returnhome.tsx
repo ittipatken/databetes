@@ -28,5 +28,6 @@ const GoHome = () => {
       </Link>
     </div>
   );
-};
+}
+
 export default GoHome;

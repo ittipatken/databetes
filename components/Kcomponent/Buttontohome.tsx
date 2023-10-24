@@ -7,5 +7,6 @@ const Buttontohome = () => {
       <GoHome />
     </div>
   );
-};
+}
+
 export default Buttontohome;

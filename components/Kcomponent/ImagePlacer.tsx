@@ -1,12 +1,30 @@
 import Image from 'next/image';
 import samplepImage from 'public/sample-image.jpg';
+import styles from '../styles.module.css'
+
 
 export default function ImagePlacer() {
     return (
-        <Image alt="Sample Image" 
-        src={samplepImage} 
-        width={500}
-        height={500}/>
+    <div>
+    <div className='z-[0] '>
+      <Image
+        alt=" "
+        src={samplepImage}
+        placeholder="blur"
+        quality={100}
+        fill
         
-    );
-}
+        sizes="100vw"
+        style={{
+          objectFit: 'cover',
+        }}
+      />
+      </div>
+      <p>
+      Image Component
+      <br />
+      as a Background
+    </p>
+    </div>
+    )
+  }

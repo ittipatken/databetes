@@ -1,30 +1,40 @@
-import { type NextRequest, NextResponse } from 'next/server';
-import { PrismaClient } from '@prisma/client';
+import { type NextRequest, NextResponse } from "next/server";
+import { PrismaClient } from "@prisma/client";
 
-const prisma = new PrismaClient;
-export const dynamic = 'force-dynamic';
+const prisma = new PrismaClient();
+export const dynamic = "force-dynamic";
 
 export async function GET() {
-    const data = await prisma.product.findMany({
-      orderBy: [
-        {
-          id: 'desc',
-        },
-      ],
-    });
-    return NextResponse.json(data);
+  const data = await prisma.product.findMany({
+    orderBy: [
+      {
+        id: "desc",
+      },
+    ],
+  });
+  return NextResponse.json(data);
 }
 
 export async function POST(request: NextRequest) {
-    const req = await request.json()
+  const req = await request.json();
 
-    const name = req.name
-    const price = req.price
-    const data = await prisma.product.create({
-        data: {
-            name,
-            price
+  console.log(req);
+  const name = req.name;
+  const price = req.price;
+
+  const data = await prisma.product.create({
+    data: {
+      name,
+      price,
+      seller: {
+        connect: {
+            id: 1
         }
-    });
-    return NextResponse.json(data);
+    }
+    
+    },
+  });
+
+  console.log(data);
+  return NextResponse.json(data);
 }

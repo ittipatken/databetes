@@ -1,41 +1,45 @@
-/*import React from "react";
-import img1 from './images/imgtest.jpg';
-
-function Addimage() {
+export default function Wallet() {
   return (
-   
-    <div>
-      eslint-disable-next-line @next/next/no-img-element
-      <img src={img1} alt="" />
-    </div>
-  );
-}
-export default Addimage;*/
+    <div className="bg-white">
+  <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
+    <h2 className="sr-only">Products</h2>
+    <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
+    
 
-/*
-import React from 'react'
-import Image from 'next/image'
- 
-function Addimage() {
-  return (
-    <div>
-    <Image
-      src="/next/images/imgtest.jpg"
-      alt=""
-      width={1841}
-      height={933}
-    />
+      <a href="#" className="group">
+        <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
+          
+          </div>
+        <h3 className="mt-4 text-sm text-gray-700">Earthen Bottle</h3>
+        <p className="mt-1 text-lg font-medium text-gray-900">$48</p>
+      </a>
+
+
+      <a href="#" className="group">
+        <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
+                </div>
+        <h3 className="mt-4 text-sm text-gray-700">Nomad Tumbler</h3>
+        <p className="mt-1 text-lg font-medium text-gray-900">$35</p>
+      </a>
+
+
+      <a href="#" className="group">
+        <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
+           </div>
+        <h3 className="mt-4 text-sm text-gray-700">Focus Paper Refill</h3>
+        <p className="mt-1 text-lg font-medium text-gray-900">$89</p>
+      </a>
+
+      
+      <a href="#" className="group">
+        <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
+           </div>
+        <h3 className="mt-4 text-sm text-gray-700">Machined Mechanical Pencil</h3>
+        <p className="mt-1 text-lg font-medium text-gray-900">$35</p>
+      </a>
+
     </div>
+  </div>
+</div>
   )
-}
- 
-export default Addimage
-*/
-import Image from 'next/image';
-import sampleImage from 'public/sample-image.jpg';
-
-export default function ImagePlacer() {
-    return (
-        <Image alt="Sample Image" src={sampleImage} />
-    );
 }

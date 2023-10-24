@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import Letter from "@/components/Letter";
 import Buttontohome from "@/components/Kcomponent/Buttontohome";
 import Productcard from "@/components/Home/ProductCard";
+import GoWallet from "@/components/Kcomponent/Towallet";
 
 type ProductType = {
   id: number;
@@ -68,8 +69,19 @@ export default function Product() {
   };
 
   return (
-    <>
-      <Buttontohome />
+    <div className="bg-gradient-to-r from-yellow-300 to-rose-200" >
+    <header>
+      <div className=" bg-gradient-to-r from-yellow-300 to-rose-200 justify-end" style={{ display: 'flex', justifyContent: 'flex-end' }}>
+      <nav>
+      <ul style={{ display: 'flex', listStyle: 'none', padding: 0, margin: 0 ,gap: '2px' }}>
+      <li style={{ marginRight: '1px' }}><GoWallet /></li>
+      <li><Buttontohome /></li>
+    </ul>
+        
+      </nav>
+      </div>
+     
+<div>
       <Letter />
       <Productcard />
 
@@ -86,7 +98,7 @@ export default function Product() {
           ))}
         </ul>
       </div>
-       <form onSubmit={handleFormSubmit}>
+      <form onSubmit={handleFormSubmit}>
         <p>Name</p>
         <input
           type="text"
@@ -103,6 +115,8 @@ export default function Product() {
         />
         <button type="submit">Submit</button>
       </form>
-    </>
+    </div>
+    </header>
+    </div>
   );
 }

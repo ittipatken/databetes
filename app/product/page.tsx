@@ -1,4 +1,5 @@
-"use client";
+"use client"
+
 import React, { useEffect, useState } from "react";
 
 import Letter from "@/components/Letter";
@@ -16,7 +17,6 @@ type ProductType = {
 
 export default function Product() {
   const [products, setProducts] = useState<ProductType[]>([]);
-  const [post, setPost] = useState([]);
   const [name, setName] = useState("");
   const [price, setPrice] = useState(0);
 

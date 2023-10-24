@@ -11,6 +11,8 @@ function Addimage() {
   );
 }
 export default Addimage;*/
+
+/*
 import React from 'react'
 import Image from 'next/image'
  
@@ -28,3 +30,12 @@ function Addimage() {
 }
  
 export default Addimage
+*/
+import Image from 'next/image';
+import sampleImage from 'public/sample-image.jpg';
+
+export default function ImagePlacer() {
+    return (
+        <Image alt="Sample Image" src={sampleImage} />
+    );
+}

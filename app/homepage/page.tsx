@@ -4,7 +4,7 @@ import ImagePlacer from "@/components/Kcomponent/ImagePlacer";
 export default function Home() {
   return (
     <>
-      <ImagePlacer />
+
       <Header />
       <ProductCard />
     

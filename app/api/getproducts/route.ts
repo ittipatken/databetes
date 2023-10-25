@@ -22,19 +22,23 @@ export async function POST(request: NextRequest) {
   const name = req.name;
   const price = req.price;
 
-  const data = await prisma.product.create({
-    data: {
-      name,
-      price,
-      seller: {
-        connect: {
+  try {
+    const data = await prisma.product.create({
+      data: {
+        name,
+        price,
+        seller: {
+          connect: {
             id: 1
+          }
         }
-    }
-    
-    },
-  });
+      },
+    });
 
-  console.log(data);
-  return NextResponse.json(data);
+    console.log(data);
+    return NextResponse.json(data);
+  } catch (error) {
+    console.log("error" + error);
+    return NextResponse.json('error' + error)
+  }
 }

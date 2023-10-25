@@ -4,23 +4,33 @@
 generator client {
   provider = "prisma-client-js"
 }
+
 datasource db {
   provider = "sqlite"
   url      = "file:./dev.db"
 }
+
 model User {
-  id    Int     @id @default(autoincrement())
-  email String  @unique
-  name  String?
-  lastname String?
-  products Product[]
+  id         Int       @id @default(autoincrement())
+  email      String    @unique
+  name       String?
+  lastname   String?
+  products   Product[]
+  remainbulb Payhist[]
 }
+
 model Product {
-  id    Int     @id @default(autoincrement()) 
-  name  String?
-  price Int?
+  id          Int     @id @default(autoincrement())
+  name        String?
+  price       Int?
   description String?
-  quantity Int?
-  userId Int 
-  seller User @relation(fields: [userId], references: [id])
+  quantity    Int?
+  userId      Int
+  seller      User    @relation(fields: [userId], references: [id])
+}
+
+model Payhist {
+  id     Int @id @default(autoincrement())
+  amount Int
+  owner User @relation(fields: [amount], references: [id])
 }

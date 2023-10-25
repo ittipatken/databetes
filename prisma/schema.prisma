@@ -16,10 +16,11 @@ model User {
   products Product[]
 }
 model Product {
-  id    Int     @id @default(autoincrement())
+  id    Int     @id @default(autoincrement()) 
+  userId Int 
   name  String?
   price Int?
   description String?
   quantity Int?
-  seller User @relation(fields: [id], references: [id])
+  seller User @relation(fields: [userId], references: [id])
 }

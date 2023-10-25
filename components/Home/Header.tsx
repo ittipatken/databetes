@@ -11,23 +11,23 @@ export default function Header() {
                     className="text-gray-500 transition hover:text-gray-500/75"
                     href="/"
                   >
-                    About
+                   Home 
                   </a>
                 </li>
 
                 <li>
                   <a
                     className="text-gray-500 transition hover:text-gray-500/75"
-                    href="/"
+                    href="/wallet"
                   >
-                    Careers
+                    Wallet
                   </a>
                 </li>
 
                 <li>
                   <a
                     className="text-gray-500 transition hover:text-gray-500/75"
-                    href="/"
+                    href="/paymenthistory"
                   >
                     History
                   </a>
@@ -36,27 +36,9 @@ export default function Header() {
                 <li>
                   <a
                     className="text-gray-500 transition hover:text-gray-500/75"
-                    href="/"
+                    href="/tester"
                   >
-                    Services
-                  </a>
-                </li>
-
-                <li>
-                  <a
-                    className="text-gray-500 transition hover:text-gray-500/75"
-                    href="/"
-                  >
-                    Projects
-                  </a>
-                </li>
-
-                <li>
-                  <a
-                    className="text-gray-500 transition hover:text-gray-500/75"
-                    href="/"
-                  >
-                    Blog
+                    Tester
                   </a>
                 </li>
               </ul>

@@ -17,10 +17,10 @@ model User {
 }
 model Product {
   id    Int     @id @default(autoincrement()) 
-  userId Int 
   name  String?
   price Int?
   description String?
   quantity Int?
+  userId Int 
   seller User @relation(fields: [userId], references: [id])
 }

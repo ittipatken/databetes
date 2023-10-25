@@ -16,11 +16,14 @@ export async function GET() {
 }
 
 export async function POST(request: NextRequest) {
+  //request - object'
   const req = await request.json();
 
+  //request to json
   console.log(req);
   const name = req.name;
   const price = req.price;
+  const userId = req.userId;
 
   try {
     const data = await prisma.product.create({
@@ -41,4 +44,5 @@ export async function POST(request: NextRequest) {
     console.log("error" + error);
     return NextResponse.json('error' + error)
   }
+  
 }

@@ -9,41 +9,16 @@ import GoWallet from "@/components/Kcomponent/Towallet";
 import ProductCard from "@/components/Home/ProductCard";
 import ProductDisplayingCard from "@/components/card/ProductDisplayingCard";
 
-type ProductType = {
-  id: number;
-  name: string;
-  price: number;
-  description: string;
-  quantity: number;
-};
-
 export default function Product() {
-  const [products, setProducts] = useState<ProductType[]>([]);
+  
   const [name, setName] = useState("");
   const [price, setPrice] = useState(0);
 
-  const fetchData = async () => {
-    try {
-      const response = await fetch("/api/getproducts", {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-
-      const data = await response.json();
-      setProducts(data);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  useEffect(() => {
-    fetchData();
-  }, []);
-
   const postRequest = async () => {
     try {
+      if(!name){
+        throw("error")
+      }
       const res = await fetch("/api/getproducts", {
         method: "POST",
         headers: {
@@ -58,7 +33,6 @@ export default function Product() {
       if (res.ok) {
         setName("");
         setPrice(0);
-        fetchData(); // Refetch the data after successful post
       }
     } catch (error) {
       console.log(error);
@@ -98,27 +72,16 @@ export default function Product() {
             </nav>
           </div>
 
-          <div>
-            <Letter />
-            <Productcard />
-          </div>
+            
+
         </header>
       </div>
 
-      <div>
-        <h1>Products</h1>
-        <ul>
-          {products.map((product) => (
-            <p key={product.id}>
-              <ProductDisplayingCard
-                name={product.name}
-                description={product.description}
-                price={product.price}
-              />
-            </p>
-          ))}
-        </ul>
+      <div className="m-5">
+        <Letter />
       </div>
+
+
 
       <form onSubmit={handleFormSubmit}>
         <p>Name</p>
@@ -126,6 +89,7 @@ export default function Product() {
           type="text"
           id="name"
           name="name"
+          value={name}
           onChange={(e) => setName(e.target.value)}
         />
         <p>Price</p>
@@ -133,6 +97,7 @@ export default function Product() {
           type="number"
           id="price"
           name="price"
+          value={price}
           onChange={(e) => setPrice(Number(e.target.value))}
         />
         <button type="submit">Submit</button>

@@ -1,23 +1,21 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
 
 import Letter from "@/components/Letter";
 import Buttontohome from "@/components/Kcomponent/Buttontohome";
-import Productcard from "@/components/Home/ProductCard";
 import GoWallet from "@/components/Kcomponent/Towallet";
-import ProductCard from "@/components/Home/ProductCard";
-import ProductDisplayingCard from "@/components/card/ProductDisplayingCard";
 
 export default function Product() {
-  
+
+  // This is a bad practice because if the value in the field changes, the entire page rerenders. We should use react-hook-form or useCallback
   const [name, setName] = useState("");
   const [price, setPrice] = useState(0);
 
   const postRequest = async () => {
     try {
-      if(!name){
-        throw("error")
+      if (!name) {
+        throw ("error")
       }
       const res = await fetch("/api/getproducts", {
         method: "POST",
@@ -46,7 +44,7 @@ export default function Product() {
 
   return (
     <>
-      <div className="bg-gradient-to-r from-yellow-300 to-rose-200">
+      {/* <div className="bg-gradient-to-r from-yellow-300 to-rose-200">
         <header>
           <div
             className=" bg-gradient-to-r from-yellow-300 to-rose-200 justify-end"
@@ -71,36 +69,36 @@ export default function Product() {
               </ul>
             </nav>
           </div>
-
-            
-
         </header>
-      </div>
-
-      <div className="m-5">
-        <Letter />
-      </div>
-
-
-
+      </div> */}
       <form onSubmit={handleFormSubmit}>
-        <p>Name</p>
-        <input
-          type="text"
-          id="name"
-          name="name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
-        <p>Price</p>
-        <input
-          type="number"
-          id="price"
-          name="price"
-          value={price}
-          onChange={(e) => setPrice(Number(e.target.value))}
-        />
-        <button type="submit">Submit</button>
+        <div className="flex flex-col space-y-2 w-96 mx-auto mt-6">
+          <div>
+            <p>ชื่อสินค้า</p>
+            <input
+              type="text"
+              id="name"
+              name="ชื่อสินค้า"
+              placeholder="ชื่อสินค้า"
+              className="input input-bordered input-accent w-full"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+          </div>
+          <div>
+            <p>ราคา</p>
+            <input
+              type="number"
+              id="price"
+              name="ราคา"
+              placeholder="ราคา"
+              className="input input-bordered input-accent w-full"
+              value={price}
+              onChange={(e) => setPrice(Number(e.target.value))}
+            />
+          </div>
+          <button type="submit" className="btn btn-primary">Submit</button>
+        </div>
       </form>
     </>
   );

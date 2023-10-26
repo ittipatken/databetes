@@ -1,8 +1,8 @@
 "use client";
-import React, { useEffect, useState } from "react";
-import Header from "@/components/Home/Header";
-import ProductCard from "@/components/Home/ProductCard";
-import ProductDisplayingCard from "@/components/card/ProductDisplayingCard";
+
+import { useEffect, useState } from "react";
+import ProductDisplayingCard from "@/components/Card/ProductDisplayingCard";
+import AddToCart from "@/components/Home/AddToCart";
 
 type ProductType = {
   id: number;
@@ -35,22 +35,17 @@ export default function Home() {
   }, []);
   return (
     <>
-      <Header />
-
-        <ProductCard />
-
-      <div>
-        <ul>
+    <AddToCart />
+      <div className="flex flex-wrap">
           {products.map((product) => (
-            <p key={product.id}>
+            <div key={product.id}>
               <ProductDisplayingCard
                 name={product.name}
                 description={product.description}
                 price={product.price}
               />
-            </p>
+            </div>
           ))}
-        </ul>
       </div>
     </>
   );

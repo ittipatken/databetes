@@ -1,8 +1,7 @@
 "use client";
-import React, { useEffect, useState } from "react";
-import Header from "@/components/Home/Header";
-import ProductCard from "@/components/Home/ProductCard";
-import ProductDisplayingCard from "@/components/card/ProductDisplayingCard";
+
+import { useEffect, useState } from "react";
+
 type Payhist = {
   // Define the properties of the Payhist type
   // For example: id, amount, date, etc.

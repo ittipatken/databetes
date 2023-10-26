@@ -1,11 +1,9 @@
 "use client";
 
 import { useState } from "react";
-
-import Letter from "@/components/Letter";
-import Buttontohome from "@/components/Kcomponent/Buttontohome";
-import GoWallet from "@/components/Kcomponent/Towallet";
-
+// import Letter from "@/components/Letter";
+// import Buttontohome from "@/components/Kcomponent/Buttontohome";
+// import GoWallet from "@/components/Kcomponent/Towallet";
 export default function Product() {
 
   // This is a bad practice because if the value in the field changes, the entire page rerenders. We should use react-hook-form or useCallback

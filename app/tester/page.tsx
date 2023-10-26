@@ -1,3 +1,5 @@
+import Walletbutt from "@/components/Kcomponent/WalletButton";
+
 export default function Tester() {
   return (
     <>
@@ -33,6 +35,7 @@ export default function Tester() {
           </div>
         </div>
       </div>
-    </>
+      <Walletbutt/>
+          </>
   );
 }

@@ -12,7 +12,7 @@ const AddToCart = () => {
           className="btn btn-outline btn-error my-2 w-52 justify-self-end"
           onClick={() => console.log("Click")}
         >
-          Add Product
+          Add to Cart
         </button>
         </div>
       </Link>

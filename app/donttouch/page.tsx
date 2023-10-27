@@ -54,7 +54,7 @@ export default function H() {
         <p>Email: {user.email}</p>
         <p>Name: {user.name}</p>
         <p>Last Name: {user.lastname}</p>
-        <p>product: {user.products}</p>
+        
       </div>
     ))}
   </div>

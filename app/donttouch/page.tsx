@@ -3,12 +3,10 @@
 import { useEffect, useState } from "react";
 
 type Payhist = {
-  // Define the properties of the Payhist type
-  // For example: id, amount, date, etc.
+
 };
 type Product = {
-  // Define the properties of the Payhist type
-  // For example: id, amount, date, etc.
+
 };
 
 

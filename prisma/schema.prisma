@@ -16,10 +16,10 @@ model User {
   name       String?
   lastname   String?
   products   Product[]
-  remainbulb Payhist[]
+  buyed      Payhist[]
 }
 
-model Product {
+model Product {  
   id          Int     @id @default(autoincrement())
   name        String?
   price       Int?
@@ -31,6 +31,7 @@ model Product {
 
 model Payhist {
   id     Int @id @default(autoincrement())
+  Userid Int
   amount Int
-  owner User @relation(fields: [amount], references: [id])
+  owner User @relation(fields: [Userid], references: [id])
 }

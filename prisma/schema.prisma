@@ -13,7 +13,6 @@ datasource db {
 model User {
   id         Int       @id @default(autoincrement())
   email      String    @unique
-  nationalId String    @unique
   name       String?
   lastname   String?
   amount     Int

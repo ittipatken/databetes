@@ -1,7 +1,0 @@
--- CreateTable
-CREATE TABLE "Payhist" (
-    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-    "Userid" INTEGER NOT NULL,
-    "amount" INTEGER NOT NULL,
-    CONSTRAINT "Payhist_Userid_fkey" FOREIGN KEY ("Userid") REFERENCES "User" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
-);

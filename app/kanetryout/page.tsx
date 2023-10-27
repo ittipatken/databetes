@@ -1,5 +1,5 @@
 "use client";
-
+import Buyhistorybox from "@/components/Kcomponent/buyhistorybox";
 import { useEffect, useState } from "react";
 type ProductType = {
   id: number;
@@ -62,8 +62,14 @@ type userdatatype = {
 
   //first หาทางดึงเ
   let arrayofpay : number[] = products.map(p=>p.price)
+  
+  //et arrayofproduct : Array[]= userinfo.map(p=>p.products)
+
+  //let userproduct= userinfo.products
+
   let sumpay = arrayofpay.reduce((sum, currentvalue) => sum + currentvalue, 0)
   
+let test = [{id: 1, name: "www" , price: 999}, {id: 1, name: "ppp" , price : 333}]
 
   return (
     <div>

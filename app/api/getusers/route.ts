@@ -25,27 +25,20 @@ export async function POST(request: NextRequest) {
   const name = req.name  
   const lastname = req.lastname
   const products = req.products
-  const remainbulb =req.remainbulb
+  const quantity = req.quantity
 
 try {
-    const data = await prisma.user.create(products);
+  const data = await prisma.user.create({
+    data: {
+      email,
+      name,
+      lastname,
+      products,
+      quantity,
+    },
+  });
 
-//pls Help error around this section
-/*  try {
-    const data = await prisma.user.create({
-      data: {
-        name,
-        lastname,
-        products,
-        remainbulb : {create : remainbulb},
-        seller: {
-          connect: {
-            id: 1
-          }
-        }
-      },
-    });
-*/
+    
     console.log(data);
     return NextResponse.json(data);
   } catch (error) {

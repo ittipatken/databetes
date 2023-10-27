@@ -125,7 +125,7 @@ export default function Product() {
             />
           </div>
           <button type="submit" className="btn btn-primary">
-            Submit
+            ส่ง
           </button>
         </div>
       </form>

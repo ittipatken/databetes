@@ -10,19 +10,16 @@ export default function Header() {
             Home
           </Link>
           <Link href="/product" className="btn btn-ghost normal-case">
-            Add product
+            Add Product
+          </Link>
+          <Link href="/dashboard/editproduct" className="btn btn-ghost normal-case">
+            Edit Product
           </Link>
           <Link href="/wallet" className="btn btn-ghost normal-case">
             Wallet
           </Link>
-          <Link href="/paymenthistory" className="btn btn-ghost normal-case">
+          <Link href="/history" className="btn btn-ghost normal-case">
             History
-          </Link>
-          <Link href="/tester" className="btn btn-ghost normal-case">
-            Tester
-          </Link>
-          <Link href="/kanetryout" className="btn btn-ghost normal-case">
-            kanetryout
           </Link>
         </div>
         <div className="flex-none gap-4">

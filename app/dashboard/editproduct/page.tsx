@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import ProductDisplayingCard from "@/components/Card/ProductDisplayingCard";
+import EditProductCard from "@/components/Card/EditProductCard";
 
 type ProductType = {
   id: number;
@@ -37,7 +37,7 @@ export default function Home() {
       <div className="flex flex-wrap m-4">
         {products.map((product) => (
           <div key={product.id}>
-            <ProductDisplayingCard
+            <EditProductCard
               name={product.name}
               description={product.description}
               price={product.price}

@@ -1,7 +1,8 @@
 "use client";
 
-import BuyHistoryBox from "@/components/Kcomponent/BuyHistoryBox";
+import BuyHistoryBox from "@/components/History/BuyHistoryBox";
 import { useEffect, useState } from "react";
+
 type ProductType = {
   id: number;
   name: string;
@@ -11,7 +12,7 @@ type ProductType = {
   seller: number
 };
 
-export default function Home() {
+export default function History() {
   const [products, setProducts] = useState<ProductType[]>([]);
 
   useEffect(() => {
@@ -33,21 +34,20 @@ export default function Home() {
     fetchData();
   }, []);
 
-  let arrayofloss = products.filter(products=>products.seller)
+  const test  = [{ id: 1, name: "www", price: 999, description: "asdkmsfsmdpfsp" }, { id: 1, name: "ppp", price: 333, description: "hhhhsdgftiiaisdiasiiacioinocnioscni" }];
 
-  let test = [{id: 1, name: "www" , price: 999, description: "asdkmsfsmdpfsp"}, {id: 1, name: "ppp" , price : 333, description: "hhhhsdgftiiaisdiasiiacioinocnioscni"}]
   return (
     <>
-    <div className="flex flex-wrap gap-4 m-3">
+      <div className="flex flex-wrap gap-4 m-3">
         {test.map((test) => (
           <div key={test.id}>
             <BuyHistoryBox
               name={test.name}
               price={test.price}
-              description={test.description}/>
+              description={test.description} />
           </div>))}
-    </div>
-      </>)
+      </div>
+    </>)
 
 
 
@@ -90,7 +90,7 @@ type userdatatype = {
 
   let sumpay = arrayofpay.reduce((sum, currentvalue) => sum + currentvalue, 0)
   */
- 
+
 //let test = [{id: 1, name: "www" , price: 999}, {id: 1, name: "ppp" , price : 333}]
 /*
 return (

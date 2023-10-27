@@ -35,17 +35,16 @@ export default function Home() {
   }, []);
   return (
     <>
-    <AddToCart />
       <div className="flex flex-wrap">
-          {products.map((product) => (
-            <div key={product.id}>
-              <ProductDisplayingCard
-                name={product.name}
-                description={product.description}
-                price={product.price}
-              />
-            </div>
-          ))}
+        {products.map((product) => (
+          <div key={product.id}>
+            <ProductDisplayingCard
+              name={product.name}
+              description={product.description}
+              price={product.price}
+            />
+          </div>
+        ))}
       </div>
     </>
   );

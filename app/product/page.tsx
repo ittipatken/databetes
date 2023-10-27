@@ -5,15 +5,16 @@ import { useState } from "react";
 // import Buttontohome from "@/components/Kcomponent/Buttontohome";
 // import GoWallet from "@/components/Kcomponent/Towallet";
 export default function Product() {
-
   // This is a bad practice because if the value in the field changes, the entire page rerenders. We should use react-hook-form or useCallback
   const [name, setName] = useState("");
   const [price, setPrice] = useState(0);
+  const [quantity, setQuantity] = useState(0);
+  const [description, setDescription] = useState("");
 
   const postRequest = async () => {
     try {
       if (!name) {
-        throw ("error")
+        throw "error";
       }
       const res = await fetch("/api/getproducts", {
         method: "POST",
@@ -23,12 +24,16 @@ export default function Product() {
         body: JSON.stringify({
           name,
           price,
+          quantity,
+          description,
         }),
       });
 
       if (res.ok) {
         setName("");
         setPrice(0);
+        setQuantity(0);
+        setDescription("");
       }
     } catch (error) {
       console.log(error);
@@ -95,7 +100,33 @@ export default function Product() {
               onChange={(e) => setPrice(Number(e.target.value))}
             />
           </div>
-          <button type="submit" className="btn btn-primary">Submit</button>
+          <div>
+            <p>ปริมาณ</p>
+            <input
+              type="number"
+              id="quantity"
+              name="ปริมาณ"
+              placeholder="ปริมาณ"
+              className="input input-bordered input-accent w-full"
+              value={quantity}
+              onChange={(e) => setQuantity(Number(e.target.value))}
+            />
+          </div>
+          <div>
+            <p>คำอธิบายเพิ่มเติม</p>
+            <input
+              type="text"
+              id="description"
+              name="คำอธิบายเพิ่มเติม"
+              placeholder="คำอธิบายเพิ่มเติม"
+              className="input input-bordered input-accent w-full"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+            />
+          </div>
+          <button type="submit" className="btn btn-primary">
+            Submit
+          </button>
         </div>
       </form>
     </>

@@ -23,6 +23,8 @@ export async function POST(request: NextRequest) {
   console.log(req);
   const name = req.name;
   const price = req.price;
+  const quantity = req.quantity
+  const description = req.description
   const userId = req.userId;
 
   try {
@@ -30,6 +32,8 @@ export async function POST(request: NextRequest) {
       data: {
         name,
         price,
+        quantity,
+        description,
         seller: {
           connect: {
             id: 1

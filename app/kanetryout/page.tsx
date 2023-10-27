@@ -1,5 +1,6 @@
 "use client";
-import Buyhistorybox from "@/components/Kcomponent/Buyhistorybox";
+
+import BuyHistoryBox from "@/components/Kcomponent/BuyHistoryBox";
 import { useEffect, useState } from "react";
 type ProductType = {
   id: number;
@@ -37,10 +38,10 @@ export default function Home() {
   let test = [{id: 1, name: "www" , price: 999, description: "asdkmsfsmdpfsp"}, {id: 1, name: "ppp" , price : 333, description: "hhhhsdgftiiaisdiasiiacioinocnioscni"}]
   return (
     <>
-    <div className="flex flex-wrap">
+    <div className="flex flex-wrap gap-4 m-3">
         {test.map((test) => (
           <div key={test.id}>
-            <Buyhistorybox
+            <BuyHistoryBox
               name={test.name}
               price={test.price}
               description={test.description}/>
@@ -97,7 +98,7 @@ return (
   <div className="flex flex-wrap">
       {test.map((test) => (
         <div key={test.id}>
-          <Buyhistorybox
+          <BuyHistoryBox
             name={test.name}
             price={test.price}/>
         </div>))}

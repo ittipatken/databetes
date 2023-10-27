@@ -3,7 +3,7 @@ import { Kanit } from 'next/font/google'
 import './globals.css'
 import Header from '@/components/Home/Header'
 
-const kanit = Kanit({ weight: ['400', '700'], subsets: ['thai'] })
+const kanit = Kanit({ weight: ['300', '500'], subsets: ['thai'] })
 
 
 export const metadata: Metadata = {

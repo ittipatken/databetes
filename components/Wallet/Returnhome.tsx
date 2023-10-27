@@ -3,7 +3,7 @@ import React from "react";
 
 const GoHome = () => {
   return (
-    <div className="flex justify-end ...">
+    <div className="flex justify-end">
       <Link href="/">
         <button className="mx-4 my-4 block rounded-md bg-teal-600 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-teal-700">
           <div className="flex items-center"> {/* Use flex to align elements horizontally */}

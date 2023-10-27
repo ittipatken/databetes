@@ -4,9 +4,9 @@ import { useEffect, useState } from "react";
 import { MoonIcon, SunIcon } from '@heroicons/react/24/solid'
 
 export default function ThemeToggle() {
-    const [theme, setTheme] = useState('light');
+    const [theme, setTheme] = useState('pastel');
     const toggleTheme = () => {
-        setTheme(theme === 'dark' ? 'light' : 'dark');
+        setTheme(theme === 'dracula' ? 'pastel' : 'dracula');
     };
     useEffect(() => {
         const htmlElement = document.querySelector('html');
@@ -18,7 +18,7 @@ export default function ThemeToggle() {
     return (
         <>
             <button className="btn btn-circle p-2" onClick={toggleTheme}>
-                {theme === "dark" ? (
+                {theme === "dracula" ? (
                     <MoonIcon />
                 ) : (
                     <SunIcon />

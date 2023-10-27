@@ -4,7 +4,7 @@ import ThemeToggle from "../ThemeToggle";
 export default function Header() {
   return (
     <>
-      <div className="navbar bg-base-100">
+      <div className="navbar bg-secondary">
         <div className="flex-1">
           <Link href="/" className="btn btn-ghost normal-case">Home</Link>
           <Link href="/wallet" className="btn btn-ghost normal-case">Wallet</Link>

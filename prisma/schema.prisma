@@ -13,10 +13,14 @@ datasource db {
 model User {
   id         Int       @id @default(autoincrement())
   email      String    @unique
+  nationalId String    @unique
   name       String?
   lastname   String?
+  amount     Int
   products   Product[]
-  buyed      Payhist[]
+
+  paid       Payhist[] @relation("sender")
+  sold      Payhist[] @relation("receiver")
 }
 
 model Product {  
@@ -30,8 +34,13 @@ model Product {
 }
 
 model Payhist {
-  id     Int @id @default(autoincrement())
-  Userid Int
+  id        Int @id @default(autoincrement())
+
+  fromUser  Int
+  sender    User @relation("sender", fields: [fromUser], references: [id])
+  
+  toUser    Int
+  receiver  User @relation("receiver", fields: [toUser], references: [id])
+
   amount Int
-  owner User @relation(fields: [Userid], references: [id])
 }

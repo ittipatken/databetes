@@ -1,5 +1,5 @@
 "use client";
-import Buyhistorybox from "@/components/Kcomponent/buyhistorybox";
+import Buyhistorybox from "@/components/Kcomponent/Buyhistorybox";
 import { useEffect, useState } from "react";
 type ProductType = {
   id: number;
@@ -7,6 +7,7 @@ type ProductType = {
   price: number;
   description: string;
   quantity: number;
+  seller: number
 };
 
 export default function Home() {
@@ -31,6 +32,25 @@ export default function Home() {
     fetchData();
   }, []);
 
+  let arrayofloss = products.filter(products=>products.seller)
+
+  let test = [{id: 1, name: "www" , price: 999, description: "asdkmsfsmdpfsp"}, {id: 1, name: "ppp" , price : 333, description: "hhhhsdgftiiaisdiasiiacioinocnioscni"}]
+  return (
+    <>
+    <div className="flex flex-wrap">
+        {test.map((test) => (
+          <div key={test.id}>
+            <Buyhistorybox
+              name={test.name}
+              price={test.price}
+              description={test.description}/>
+          </div>))}
+    </div>
+      </>)
+
+
+
+  /*
 type userdatatype = {
   id  : number
   email : string
@@ -59,8 +79,8 @@ type userdatatype = {
     };
     fetchData();
   }, []);
-
-  //first หาทางดึงเ
+*/
+  /*
   let arrayofpay : number[] = products.map(p=>p.price)
   
   //et arrayofproduct : Array[]= userinfo.map(p=>p.products)
@@ -68,22 +88,20 @@ type userdatatype = {
   //let userproduct= userinfo.products
 
   let sumpay = arrayofpay.reduce((sum, currentvalue) => sum + currentvalue, 0)
-  
-let test = [{id: 1, name: "www" , price: 999}, {id: 1, name: "ppp" , price : 333}]
-
-  return (
-    <div>
-    {userinfo.map((user) => (
-      <div key={user.id}>
-        <h2>User Information</h2>
-        <p>ID: {user.id}</p>
-        <p>Email: {user.email}</p>
-        <p>Name: {user.name}</p>
-        <p>Last Name: {user.lastname}</p>
-        {arrayofpay}
-        <p>{sumpay}</p>
-      </div>
-    ))}
+  */
+ 
+//let test = [{id: 1, name: "www" , price: 999}, {id: 1, name: "ppp" , price : 333}]
+/*
+return (
+  <>
+  <div className="flex flex-wrap">
+      {test.map((test) => (
+        <div key={test.id}>
+          <Buyhistorybox
+            name={test.name}
+            price={test.price}/>
+        </div>))}
   </div>
-  )}
-
+    </>
+)}
+      */}

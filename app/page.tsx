@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import ProductDisplayingCard from "@/components/card/ProductDisplayingCard";
+import ProductDisplayingCard from "@/components/Card/ProductDisplayingCard";
 import AddToCart from "@/components/Home/AddToCart";
 
 type ProductType = {

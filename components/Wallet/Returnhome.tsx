@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React from "react";
 
-const GoHome = () => {
+const ReturnHome = () => {
   return (
     <div className="flex justify-end ...">
       <Link href="/">
@@ -29,4 +29,4 @@ const GoHome = () => {
   );
 }
 
-export default GoHome;
+export default ReturnHome;

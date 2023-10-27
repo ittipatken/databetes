@@ -1,8 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import ProductDisplayingCard from "@/components/card/ProductDisplayingCard";
-import AddToCart from "@/components/Home/AddToCart";
+import ProductDisplayingCard from "@/components/Card/ProductDisplayingCard";
 
 type ProductType = {
   id: number;

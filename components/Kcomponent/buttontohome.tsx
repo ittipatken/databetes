@@ -1,13 +1,13 @@
-"use client"
+"use client";
 
-import GoHome from "../Wallet/Returnhome";
-import React from "react";
-const Buttontohome = () => {
+import ReturnHome from "../Wallet/ReturnHome";
+
+const ButtonToHome = () => {
   return (
     <div>
-      <GoHome />
+      <ReturnHome />
     </div>
   );
 }
 
-export default Buttontohome;
+export default ButtonToHome;

@@ -21,6 +21,9 @@ export default function Header() {
           <Link href="/tester" className="btn btn-ghost normal-case">
             Tester
           </Link>
+          <Link href="/kanetryout" className="btn btn-ghost normal-case">
+            kanetryout
+          </Link>
         </div>
         <div className="flex-none gap-4">
           <button className="btn btn-accent normal-case text-xl">Login</button>

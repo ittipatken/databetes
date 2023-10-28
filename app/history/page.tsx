@@ -2,7 +2,7 @@
 
 import BuyHistoryBox from "@/components/History/BuyHistoryBox";
 import { useEffect, useState } from "react";
-
+import { useSession } from 'next-auth/react';
 type ProductType = {
   id: number;
   name: string;
@@ -34,9 +34,24 @@ export default function History() {
     fetchData();
   }, []);
 
+    const { data: session } = useSession();
+    if(session){
+        return(
+            <>
+            <h1> you are logged in as {JSON.stringify(session)}</h1>
+            </>
+        )
+    }
+    else return(
+        <>
+        
+        </>
+    )
+}
+
   const test  = [{ id: 1, name: "www", price: 999, description: "asdkmsfsmdpfsp" }, { id: 1, name: "ppp", price: 333, description: "hhhhsdgftiiaisdiasiiacioinocnioscni" }];
 
-  return (
+  
     <>
       <div className="flex flex-wrap gap-4 m-3">
         {test.map((test) => (
@@ -47,7 +62,7 @@ export default function History() {
               description={test.description} />
           </div>))}
       </div>
-    </>)
+    </>
 
 
 
@@ -105,4 +120,4 @@ return (
   </div>
     </>
 )}
-      */}
+      */

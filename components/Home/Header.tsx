@@ -1,8 +1,21 @@
+'use client'
+
 import Link from "next/link";
 import ThemeToggle from "../ThemeToggle";
-import SigninButton from "../Auth/SigninButton";
+import { useSession } from 'next-auth/react';
+import SignInButton from "../../components/Auth/SigninButton";
+import SignOutButton from "../../components/Auth/SignoutButton";
 
 export default function Header() {
+  const {data: session} = useSession()
+  var button;
+  
+  if (session) {
+    button = <SignOutButton />
+  } else {
+    button = <SignInButton />
+  }
+
   return (
     <>
       <div className="navbar bg-base-100">
@@ -24,7 +37,7 @@ export default function Header() {
           </Link>
         </div>
         <div className="flex-none gap-4">
-          <SigninButton />
+          {button}
           <ThemeToggle />
         </div>
       </div>

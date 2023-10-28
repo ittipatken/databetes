@@ -17,7 +17,7 @@ export default function Home() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("/api/getproducts", {
+        const response = await fetch("/api/products", {
           method: "GET",
           headers: {
             "Content-Type": "application/json",

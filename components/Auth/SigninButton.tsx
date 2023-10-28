@@ -1,9 +1,10 @@
-"use client";
-
-import { signIn } from "next-auth/react";
-
-export default function SigninButton() {
+export default function SignInButton() {
     return (
-        <button className="btn btn-accent normal-case text-xl" onClick={async () => { await signIn(); }}>Login</button>
+      <>
+        <a href="/auth/signin">
+          <button className="btn btn-accent normal-case text-xl">Login</button>
+        </a>
+      </>
     );
-}
+  }
+  

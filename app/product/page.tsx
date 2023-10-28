@@ -16,7 +16,7 @@ export default function Product() {
       if (!name) {
         throw "error";
       }
-      const res = await fetch("/api/getproducts", {
+      const res = await fetch("/api/products", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

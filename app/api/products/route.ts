@@ -1,5 +1,7 @@
 import { type NextRequest, NextResponse } from "next/server";
 import { PrismaClient } from "@prisma/client";
+import { getServerSession } from "next-auth/next";
+import { config } from "@/app/lib/auth";
 
 const prisma = new PrismaClient();
 export const dynamic = "force-dynamic";
@@ -18,14 +20,24 @@ export async function GET() {
 export async function POST(request: NextRequest) {
   //request - object'
   const req = await request.json();
+  const session = await getServerSession(config);
 
-  //request to json
-  console.log(req);
   const name = req.name;
   const price = req.price;
   const quantity = req.quantity
   const description = req.description
-  const userId = req.userId;
+
+  if(!session || !session.user?.email){
+    return NextResponse.json({status: 'error'})
+  }
+
+  const getUser = await prisma.user.findUnique({
+    where: {
+      email: session.user.email
+    }
+  })
+  
+  const userId = Number(getUser?.id)
 
   try {
     const data = await prisma.product.create({
@@ -34,18 +46,12 @@ export async function POST(request: NextRequest) {
         price,
         quantity,
         description,
-        seller: {
-          connect: {
-            id: 1
-          }
-        }
+        userId,
       },
     });
 
-    console.log(data);
     return NextResponse.json(data);
   } catch (error) {
-    console.log("error" + error);
     return NextResponse.json('error' + error)
   }
   

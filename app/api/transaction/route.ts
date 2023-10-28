@@ -21,6 +21,60 @@ async function block_hashing(
   return hashHex;
 }
 
+export const dynamic = "force-dynamic";
+
+export async function GET() {
+  const session = await getServerSession(config);
+
+  if(!session?.user?.email){
+    return NextResponse.json('error');
+  }
+
+  const thisuser = await prisma.user.findUnique({
+    where: {
+      email: session.user.email
+    },
+    select: {
+      id: true
+    }
+  })
+
+  if(!thisuser?.id){
+    return NextResponse.json({error: 'error'})
+  }
+  
+  const data = await prisma.payhist.findMany({
+    where: {
+      fromUser: thisuser.id
+    },
+    select: {
+      fromUser: true,
+      toUser: true,
+      amount: true,
+    }
+  });
+//data = [{"fromUser":1,"toUser":null},{"fromUser":1,"toUser":null},{"fromUser":1,"toUser":null}]
+/*
+  data.map((datum) => {
+    const user = await prisma.user.findUnique({
+      where: {
+        id: datum.toUser
+      },
+      select: {
+        name: true,
+        lastname: true
+      }
+    })
+    console.log(user)
+    datum.toUser = user.name + user.lastname
+  })
+*/
+  return NextResponse.json(data);
+}
+
+
+
+
 export async function POST(request: NextRequest) {
   try {
     const req = await request.json();

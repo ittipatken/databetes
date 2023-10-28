@@ -18,8 +18,18 @@ model User {
   amount     Int
   products   Product[]
 
-  paid       Payhist[] @relation("sender")
-  sold      Payhist[] @relation("receiver")
+  paid        Payhist[] @relation("sender")
+  sold        Payhist[] @relation("receiver")
+  
+  credential  UserCredential?
+}
+
+model UserCredential {
+  id        Int       @id @default(autoincrement())
+  userid    Int       @unique
+  user      User      @relation(fields: [userid], references: [id])
+  chula     String    @unique
+  password  String    
 }
 
 model Product {  
@@ -42,4 +52,5 @@ model Payhist {
   receiver  User @relation("receiver", fields: [toUser], references: [id])
 
   amount Int
+  hash String @default("")
 }

@@ -14,6 +14,7 @@ type ProductType = {
 
 export default function History() {
   const [products, setProducts] = useState<ProductType[]>([]);
+  const { data: session } = useSession();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -33,91 +34,19 @@ export default function History() {
     };
     fetchData();
   }, []);
-
-    const { data: session } = useSession();
-    if(session){
-        return(
-            <>
-            <h1> you are logged in as {JSON.stringify(session)}</h1>
-            </>
-        )
-    }
-    else return(
-        <>
-        
+  if (session) {
+    return (
+      <>
+          <div className="flex flex-wrap gap-2 m-3">
+            {products.map((product) => (
+              <div key={product.id}>
+                <BuyHistoryBox
+                  name={product.name}
+                  price={product.price}
+                  description={product.description} />
+              </div>))}
+          </div>
         </>
     )
+  }
 }
-
-  const test  = [{ id: 1, name: "www", price: 999, description: "asdkmsfsmdpfsp" }, { id: 1, name: "ppp", price: 333, description: "hhhhsdgftiiaisdiasiiacioinocnioscni" }];
-
-  
-    <>
-      <div className="flex flex-wrap gap-4 m-3">
-        {test.map((test) => (
-          <div key={test.id}>
-            <BuyHistoryBox
-              name={test.name}
-              price={test.price}
-              description={test.description} />
-          </div>))}
-      </div>
-    </>
-
-
-
-  /*
-type userdatatype = {
-  id  : number
-  email : string
-  name : string     
-  lastname : String
-  products: ProductType[]
-} 
-
-  const [userinfo, setUserinfo] = useState<userdatatype[]>([]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch("/api/getusers", {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        });
-
-        const data = await response.json();
-        setUserinfo(data);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    fetchData();
-  }, []);
-*/
-  /*
-  let arrayofpay : number[] = products.map(p=>p.price)
-  
-  //et arrayofproduct : Array[]= userinfo.map(p=>p.products)
-
-  //let userproduct= userinfo.products
-
-  let sumpay = arrayofpay.reduce((sum, currentvalue) => sum + currentvalue, 0)
-  */
-
-//let test = [{id: 1, name: "www" , price: 999}, {id: 1, name: "ppp" , price : 333}]
-/*
-return (
-  <>
-  <div className="flex flex-wrap">
-      {test.map((test) => (
-        <div key={test.id}>
-          <BuyHistoryBox
-            name={test.name}
-            price={test.price}/>
-        </div>))}
-  </div>
-    </>
-)}
-      */

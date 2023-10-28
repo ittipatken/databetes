@@ -1,7 +1,7 @@
 "use client";
 
+import ProductDisplayingCard from "@/components/Card/ProductDisplayingCard";
 import { useEffect, useState } from "react";
-import ProductDisplayingCard from "@/components/card/ProductDisplayingCard";
 
 type ProductType = {
   id: number;
@@ -34,7 +34,7 @@ export default function Home() {
   }, []);
   return (
     <>
-      <div className="flex flex-wrap m-4">
+      <div className="flex flex-wrap gap-2 m-4">
         {products.map((product) => (
           <div key={product.id}>
             <ProductDisplayingCard

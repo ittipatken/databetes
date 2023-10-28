@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import WalletBox from "@/components/Wallet/WalletBox";
 import { useSession } from "next-auth/react";
+import SigninForm from "@/components/Auth/SigninForm";
 
 type AccountType = {
   id: number;
@@ -14,10 +15,10 @@ type AccountType = {
 
 export default function Home() {
   const { data: session } = useSession();
+  const [accounts, setAccounts] = useState<AccountType | null>(null);
 
-  if (session) {
-    const [accounts, setAccounts] = useState<AccountType>();
-    useEffect(() => {
+  useEffect(() => {
+    if (session) {
       const fetchData = async () => {
         try {
           const response = await fetch("/api/account", {
@@ -34,19 +35,18 @@ export default function Home() {
         }
       };
       fetchData();
-    }, []);
-    return (
-      <>
+    }
+  }, [session]); // Include 'session' as a dependency
+
+  return (
+    <>
+      {session ? (
         <div className="flex flex-wrap m-4">
           <WalletBox name={accounts?.name} amount={accounts?.amount} />
         </div>
-      </>
-    );
-  } else {
-    return (
-      <>
-        <h1>please log in</h1>
-      </>
-    );
-  }
+      ) : (
+        <SigninForm />
+      )}
+    </>
+  );
 }

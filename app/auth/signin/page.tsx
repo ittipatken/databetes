@@ -1,20 +1,18 @@
-'use client'; 
+'use client';
 
 import SigninForm from "@/components/Auth/SigninForm";
 import { useSession } from 'next-auth/react';
+import { useRouter } from 'next/navigation'
 
 export default function SignIn() {
     const { data: session } = useSession();
-    if(session){
-        return(
-            <>
-            <h1> you are logged in as {JSON.stringify(session)}</h1>
-            </>
-        )
+    const router = useRouter()
+    if (session) {
+        router.replace('/')
     }
-    return(
+    return (
         <>
-        <SigninForm/>
+            <SigninForm />
         </>
     )
 }

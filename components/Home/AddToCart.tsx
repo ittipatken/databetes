@@ -6,7 +6,7 @@ import React from "react";
 const AddToCart = () => {
   return (
     <div>
-      <Link href="/product">
+      <Link href="/dashboard/addproduct">
         <div className="grid justify-items-stretch">
           <button
             className="btn btn-outline btn-error my-2 w-52 justify-self-end"

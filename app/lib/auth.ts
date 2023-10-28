@@ -11,7 +11,6 @@ import type {
 } from "next-auth";
 import { getServerSession } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
-import { type JWT } from "next-auth/jwt";
 
 interface User {
   id: number;
@@ -19,10 +18,6 @@ interface User {
   lastname: string;
   email: string;
   amount: number;
-}
-
-interface Session extends DefaultSession {
-  user?: User;
 }
 
 export const config = {

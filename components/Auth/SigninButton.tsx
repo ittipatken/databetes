@@ -1,10 +1,11 @@
+import Link from "next/link";
+
 export default function SignInButton() {
-    return (
-      <>
-        <a href="/auth/signin">
-          <button className="btn btn-accent normal-case text-xl">Login</button>
-        </a>
-      </>
-    );
-  }
-  
+  return (
+    <>
+      <Link href="/auth/signin">
+        <button className="btn btn-accent normal-case">เข้าสู่ระบบ</button>
+      </Link>
+    </>
+  );
+}

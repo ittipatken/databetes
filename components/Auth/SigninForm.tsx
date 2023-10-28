@@ -6,7 +6,6 @@ import { signIn } from 'next-auth/react';
 export default function SigninForm() {
     const [chulaId, setChulaId] = useState('');
     const [password, setPassword] = useState('');
-    const [error, setError] = useState(false);
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -18,42 +17,43 @@ export default function SigninForm() {
         },);
 
         if (result?.error) {
-            setError(true);
             setChulaId('');
             setPassword('');
         }
     };
     return (
-        <div>
-            <div>
-                <form onSubmit={handleSubmit}>
-                    <div className='border'>
-                        <h1>กรุณาเข้าสู่ระบบเพื่อเข้าถึงหน้านี้</h1>
+        <>
+            <form onSubmit={handleSubmit}>
+                <div className="flex flex-col space-y-2 w-96 mx-auto mt-6">
+                    <div>
+                        <p>Chula ID</p>
                         <input
-                            id="chulaid"
                             type="number"
-                            name="chulaid"
+                            id="name"
+                            name="Chula ID"
+                            placeholder="Chula ID"
+                            className="input input-bordered input-accent w-full"
                             value={chulaId}
-                            className='border bg-gray-400'
-                            onChange={(e) => { setChulaId(e.target.value); }}
-                            required
+                            onChange={(e) => setChulaId(e.target.value)}
                         />
-                        <input
-                            id="password"
-                            type="password"
-                            name="pass"
-                            value={password}
-                            className='border bg-gray-400'
-                            onChange={(e) => { setPassword(e.target.value); }}
-                            required
-                        />
-                        <button type="submit">
-                            เข้าสู่ระบบ
-                        </button>
-                        {error && <h1 color="red">ไม่สามารถเข้าสู่ระบบได้</h1>}
                     </div>
-                </form>
-            </div>
-        </div>
+                    <div>
+                        <p>รหัสผ่าน</p>
+                        <input
+                            type="text"
+                            id="password"
+                            name="รหัสผ่าน"
+                            placeholder="รหัสผ่าน"
+                            className="input input-bordered input-accent w-full"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                        />
+                    </div>
+                    <button type="submit" className="btn btn-primary">
+                        ส่ง
+                    </button>
+                </div>
+            </form>
+        </>
     );
 }

@@ -7,9 +7,9 @@ import SignInButton from "../../components/Auth/SigninButton";
 import SignOutButton from "../../components/Auth/SignoutButton";
 
 export default function Header() {
-  const {data: session} = useSession()
+  const { data: session } = useSession()
   var button;
-  
+
   if (session) {
     button = <SignOutButton />
   } else {
@@ -23,18 +23,21 @@ export default function Header() {
           <Link href="/" className="btn btn-ghost normal-case">
             Home
           </Link>
-          <Link href="/product" className="btn btn-ghost normal-case">
-            Add Product
-          </Link>
-          <Link href="/dashboard/editproduct" className="btn btn-ghost normal-case">
-            Edit Product
-          </Link>
-          <Link href="/wallet" className="btn btn-ghost normal-case">
-            Wallet
-          </Link>
-          <Link href="/history" className="btn btn-ghost normal-case">
-            History
-          </Link>
+          {session && <>
+            <Link href="/dashboard/addproduct" className="btn btn-ghost normal-case">
+              Add Product
+            </Link>
+            <Link href="/dashboard/editproduct" className="btn btn-ghost normal-case">
+              Edit Product
+            </Link>
+            <Link href="/wallet" className="btn btn-ghost normal-case">
+              Wallet
+            </Link>
+            <Link href="/history" className="btn btn-ghost normal-case">
+              History
+            </Link>
+          </>
+          }
         </div>
         <div className="flex-none gap-4">
           {button}

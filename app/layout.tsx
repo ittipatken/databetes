@@ -1,10 +1,8 @@
-"use client";
-
-import { SessionProvider } from "next-auth/react";
 import type { Metadata } from "next";
 import { Kanit } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Home/Header";
+import { SessionProvider } from "@/components/Auth/SessionProvider";
 
 const kanit = Kanit({ weight: ["400", "700"], subsets: ["thai"] });
 

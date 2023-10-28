@@ -34,7 +34,7 @@ export default function Home() {
   }, []);
   return (
     <>
-      <div className="flex flex-wrap m-4">
+      <div className="flex flex-wrap gap-2 m-4">
         {products.map((product) => (
           <div key={product.id}>
             <EditProductCard

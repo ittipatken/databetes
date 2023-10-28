@@ -1,5 +1,6 @@
 import Link from "next/link";
 import ThemeToggle from "../ThemeToggle";
+import SigninButton from "../Auth/SigninButton";
 
 export default function Header() {
   return (
@@ -23,7 +24,7 @@ export default function Header() {
           </Link>
         </div>
         <div className="flex-none gap-4">
-          <button className="btn btn-accent normal-case text-xl">Login</button>
+          <SigninButton />
           <ThemeToggle />
         </div>
       </div>

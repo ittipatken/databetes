@@ -39,7 +39,7 @@ export default function EditProductModal(props: any) {
     }
     return (
         <>
-            <dialog id="edit_product_modal" className="modal">
+            <dialog id={"model_" + props.id} className="modal">
                 <div className="modal-box">
                     <form method="dialog">
                         {/* if there is a button in form, it will close the modal */}

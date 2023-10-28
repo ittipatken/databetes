@@ -1,16 +1,42 @@
 "use client";
 
+import { useSession } from "next-auth/react";
 import { useState } from "react";
-
-const handleClick = () => {
-    // edit product
-}
 
 export default function EditProductModal(props: any) {
     const [name, setName] = useState(props.name);
     const [price, setPrice] = useState(props.price);
     const [quantity, setQuantity] = useState(props.quantity);
     const [description, setDescription] = useState(props.description);
+    const { data: session } = useSession();
+    const handleClick = async () => {
+        try {
+            const response = await fetch('/api/products', {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    name,
+                    price,
+                    quantity,
+                    description,
+                    // doesn't work
+                    userId: session?.user?.email,
+                }),
+            });
+
+            if (response.ok) {
+               console.log(response)
+            } else {
+                console.log("error" + response)
+                // Handle errors, e.g., show an error message.
+            }
+        } catch (error) {
+            console.log(error)
+            // Handle any network or request errors here.
+        }
+    }
     return (
         <>
             <dialog id="edit_product_modal" className="modal">
@@ -29,7 +55,7 @@ export default function EditProductModal(props: any) {
                         <input type="number" placeholder="จำนวน" className="input w-full" value={quantity} onChange={(e) => setQuantity(Number(e.target.value))} />
                         <p className="text-slate-500">รายละเอียด</p>
                         <input type="text" placeholder="รายละเอียด" className="input w-full" value={description} onChange={(e) => setDescription(e.target.value)} />
-                    <button className="btn btn-secondary" onClick={handleClick}>แก้ไขข้อมูล</button>
+                        <button className="btn btn-secondary" onClick={handleClick}>แก้ไขข้อมูล</button>
                     </div>
                 </div>
             </dialog>

@@ -41,6 +41,7 @@ export default function Home() {
               name={product.name}
               description={product.description}
               price={product.price}
+              quantity={product.quantity}
             />
           </div>
         ))}

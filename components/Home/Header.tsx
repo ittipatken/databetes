@@ -8,14 +8,6 @@ import SignOutButton from "../../components/Auth/SignoutButton";
 
 export default function Header() {
   const { data: session } = useSession()
-  var button;
-
-  if (session) {
-    button = <SignOutButton />
-  } else {
-    button = <SignInButton />
-  }
-
   return (
     <>
       <div className="navbar bg-base-100">
@@ -40,7 +32,16 @@ export default function Header() {
           }
         </div>
         <div className="flex-none gap-4">
-          {button}
+          {session ?
+            <SignOutButton />
+            :
+            <>
+              <Link href="/auth/register" className="btn btn-primary normal-case">
+                สมัคร
+              </Link>
+              <SignInButton />
+            </>
+          }
           <ThemeToggle />
         </div>
       </div>

@@ -80,6 +80,15 @@ export async function POST(request: NextRequest) {
     });
   }
   
+  const updateUser = await prisma.user.update({
+    where: {
+      id: getUser.id
+    },
+    data: {
+      amount: getUser.amount - amount
+    }
+  })
+
   const getSeller = await prisma.product.findUnique({
     where: {
       id: id,
@@ -103,6 +112,15 @@ export async function POST(request: NextRequest) {
   if(!seller){
     return NextResponse.json({error: 'error'})
   }
+
+  const updateSeller = await prisma.user.update({
+    where: {
+      id: seller.id
+    },
+    data: {
+      amount: seller.amount + amount,
+    }
+  })
 
   try {
     const data = await prisma.buyhist.create({

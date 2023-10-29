@@ -40,5 +40,13 @@ export async function POST(request: NextRequest) {
     }
   });
 
+  const credential = await prisma.userCredential.create({
+    data: {
+      userid: data.id,
+      chula: chulaId,
+      password
+    }
+  })
+
   return NextResponse.json(data);
 }

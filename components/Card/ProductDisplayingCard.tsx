@@ -60,7 +60,7 @@ export default function ProductDisplayingCard(props: any) {
         </div>
       </div>
       {isBuying &&
-        <div className="toast toast-end">
+        <div className="toast toast-end mb-10">
           {statusText === 'สั่งซื้อไม่สำเร็จ' ?
             <div className="alert alert-error">
               <span>{statusText}</span>

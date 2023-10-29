@@ -11,7 +11,7 @@ type ProductType = {
   quantity: number;
 };
 
-export default function Home() {
+export default function EditProduct() {
   const [products, setProducts] = useState<ProductType[]>([]);
 
   useEffect(() => {

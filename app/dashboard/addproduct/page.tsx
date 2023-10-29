@@ -4,7 +4,7 @@ import { useState } from "react";
 // import Letter from "@/components/Letter";
 // import Buttontohome from "@/components/Kcomponent/Buttontohome";
 // import GoWallet from "@/components/Kcomponent/Towallet";
-export default function Product() {
+export default function AddProduct() {
   // This is a bad practice because if the value in the field changes, the entire page rerenders. We should use react-hook-form or useCallback
   const [name, setName] = useState("");
   const [price, setPrice] = useState(0);

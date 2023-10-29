@@ -52,6 +52,7 @@ export async function GET() {
 export async function POST(request: NextRequest) {
   //request - object'
   const req = await request.json();
+  console.log(req)
   const session = await getServerSession(config);
 
   const id = req.productId;
@@ -68,27 +69,32 @@ export async function POST(request: NextRequest) {
     }
   })
 
-
+  console.log('getUser')
+  console.log(getUser)
 
   if(!getUser){
     return NextResponse.json({error: 'error'})
   }
+  console.log(getUser.amount)
 
   if(amount > getUser.amount){
+    console.log('not enough money')
     return NextResponse.json({error: 'not enough money'})
   }
 
-  await prisma.user.update({
+  const updateUser = await prisma.user.update({
     where: {
-      id: id
+      id: getUser.id
     },
     data: {
       amount: getUser.amount - amount
     }
   })
 
+  console.log('updateUser')
+  console.log(updateUser)
 
-  const getSeller = await prisma.product.findFirst({
+  const getSeller = await prisma.product.findUnique({
     where: {
       id: id,
     },
@@ -98,13 +104,11 @@ export async function POST(request: NextRequest) {
     }
   })
 
-
-
   if(!getSeller){
     return NextResponse.json({error: 'error'})
   } 
 
-  const seller = await prisma.user.findFirst({
+  const seller = await prisma.user.findUnique({
     where: {
       id: getSeller.userId
     }
@@ -116,7 +120,7 @@ export async function POST(request: NextRequest) {
 
   await prisma.user.update({
     where: {
-      id: getSeller.userId
+      id: seller.id
     },
     data: {
       amount: seller.amount + amount,

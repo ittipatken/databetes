@@ -22,7 +22,7 @@ export default function ProductDisplayingCard(props: any) {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            id: props.id,
+            productId: props.id,
             quantity,
             amount: props.price * quantity,
           }),

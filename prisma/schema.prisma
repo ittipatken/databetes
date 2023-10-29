@@ -11,28 +11,28 @@ datasource db {
 }
 
 model User {
-  id         Int       @id @default(autoincrement())
-  email      String    @unique
-  name       String?
-  lastname   String?
-  amount     Int
-  products   Product[]
+  id       Int       @id @default(autoincrement())
+  email    String    @unique
+  name     String?
+  lastname String?
+  amount   Int       @default(10000)
+  products Product[]
 
-  paid        Payhist[] @relation("sender")
-  sold        Payhist[] @relation("receiver")
-  
-  credential  UserCredential?
+  paid Payhist[] @relation("sender")
+  sold Payhist[] @relation("receiver")
+
+  credential UserCredential?
 }
 
 model UserCredential {
-  id        Int       @id @default(autoincrement())
-  userid    Int       @unique
-  user      User      @relation(fields: [userid], references: [id])
-  chula     String    @unique
-  password  String    
+  id       Int    @id @default(autoincrement())
+  userid   Int    @unique
+  user     User   @relation(fields: [userid], references: [id])
+  chula    String @unique
+  password String
 }
 
-model Product {  
+model Product {
   id          Int     @id @default(autoincrement())
   name        String?
   price       Int?
@@ -43,14 +43,14 @@ model Product {
 }
 
 model Payhist {
-  id        Int @id @default(autoincrement())
+  id Int @id @default(autoincrement())
 
-  fromUser  Int
-  sender    User @relation("sender", fields: [fromUser], references: [id])
-  
-  toUser    Int
-  receiver  User @relation("receiver", fields: [toUser], references: [id])
+  fromUser Int
+  sender   User @relation("sender", fields: [fromUser], references: [id])
+
+  toUser   Int
+  receiver User @relation("receiver", fields: [toUser], references: [id])
 
   amount Int
-  hash String @default("")
+  hash   String @default("")
 }

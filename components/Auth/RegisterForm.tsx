@@ -3,17 +3,43 @@
 import { useState } from 'react';
 
 export default function SigninForm() {
+    const [email, setEmail] = useState('')
+    const [name, setName] = useState('')
+    const [lastname, setLastname] = useState('')
     const [chulaId, setChulaId] = useState('');
     const [password, setPassword] = useState('');
     const [passwordConfirmation, setPasswordConfirmation] = useState('');
+    const [passowordMatched, setPasswordMatched] = useState(true);
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         if (password === passwordConfirmation) {
-            // register
+            setPasswordMatched(true)
+            try {
+                const res = await fetch("/api/products", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        email,
+                        name,
+                        lastname,
+                        chulaId,
+                        password,
+                    }),
+                });
+
+                if (res.ok) {
+                    console.log(res)
+                }
+            } catch (error) {
+                console.log(error);
+            }
         }
         else {
             console.log('unmatch password')
+            setPasswordMatched(false)
         }
     };
     return (
@@ -22,11 +48,39 @@ export default function SigninForm() {
             <form onSubmit={handleSubmit}>
                 <div className="flex flex-col space-y-2 w-96 mx-auto mt-6">
                     <div>
+                        <p>อีเมล</p>
+                        <input
+                            type="text"
+                            placeholder="อีเมล"
+                            className="input input-bordered input-accent w-full"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                        />
+                    </div>
+                    <div>
+                        <p>ชื่อ</p>
+                        <input
+                            type="text"
+                            placeholder="ชื่อ"
+                            className="input input-bordered input-accent w-full"
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
+                        />
+                    </div>
+                    <div>
+                        <p>นามสกุล</p>
+                        <input
+                            type="text"
+                            placeholder="นามสกุล"
+                            className="input input-bordered input-accent w-full"
+                            value={lastname}
+                            onChange={(e) => setLastname(e.target.value)}
+                        />
+                    </div>
+                    <div>
                         <p>Chula ID</p>
                         <input
                             type="number"
-                            id="name"
-                            name="Chula ID"
                             placeholder="Chula ID"
                             className="input input-bordered input-accent w-full"
                             value={chulaId}
@@ -36,9 +90,7 @@ export default function SigninForm() {
                     <div>
                         <p>รหัสผ่าน</p>
                         <input
-                            type="text"
-                            id="password"
-                            name="รหัสผ่าน"
+                            type="password"
                             placeholder="รหัสผ่าน"
                             className="input input-bordered input-accent w-full"
                             value={password}
@@ -48,18 +100,17 @@ export default function SigninForm() {
                     <div>
                         <p>ยืนยันรหัสผ่าน</p>
                         <input
-                            type="text"
-                            id="password"
-                            name="รหัสผ่าน"
+                            type="password"
                             placeholder="รหัสผ่าน"
                             className="input input-bordered input-accent w-full"
-                            value={password}
+                            value={passwordConfirmation}
                             onChange={(e) => setPasswordConfirmation(e.target.value)}
                         />
                     </div>
                     <button type="submit" className="btn btn-primary">
                         สมัคร
                     </button>
+                    {!passowordMatched && <p className="text-red-600">รหัสผ่านไม่ถูกต้อง</p>}
                 </div>
             </form>
         </>

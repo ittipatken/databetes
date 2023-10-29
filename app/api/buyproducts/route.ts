@@ -74,7 +74,10 @@ export async function POST(request: NextRequest) {
   console.log(getUser.amount)
 
   if(amount > getUser.amount){
-    return NextResponse.json({error: 'not enough money'})
+    return new NextResponse(JSON.stringify({ error: 'not enough money' }), {
+      status: 400,
+      headers: { 'Content-Type': 'application/json' }
+    });
   }
   
   const updateUser = await prisma.user.update({

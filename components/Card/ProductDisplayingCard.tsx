@@ -33,6 +33,8 @@ export default function ProductDisplayingCard(props: any) {
         if (res.ok) {
           setStatusText('สั่งซื้อสำเร็จ')
           console.log(res);
+        } else {
+          setStatusText('สั่งซื้อไม่สำเร็จ')
         }
       } catch (error) {
         setStatusText('สั่งซื้อไม่สำเร็จ')

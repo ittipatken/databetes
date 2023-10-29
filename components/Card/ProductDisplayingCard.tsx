@@ -1,5 +1,6 @@
 "use client";
 
+import { InformationCircleIcon } from "@heroicons/react/24/solid";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -54,8 +55,9 @@ export default function ProductDisplayingCard(props: any) {
         <div className="card-body">
           <h2 className="card-title">{props.name}</h2>
           <div className="card-actions flex flex-col">
-            <button className="btn btn-outline" onClick={() => handleDetail(props.description)}>รายละเอียด</button>
+            <button className="btn btn-ghost" onClick={() => handleDetail(props.description)}>รายละเอียด <InformationCircleIcon className="h-5" /></button>
             <button className="btn btn-primary" onClick={handleClick}>ราคา {props.price} Blub</button>
+            
           </div>
         </div>
       </div>
@@ -70,7 +72,6 @@ export default function ProductDisplayingCard(props: any) {
                <span>{statusText}</span>
             </div>
           }
-
         </div>
       }
     </>

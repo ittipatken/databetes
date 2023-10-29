@@ -7,6 +7,7 @@ export default function EditProductModal(props: any) {
     const [price, setPrice] = useState(props.price);
     const [quantity, setQuantity] = useState(props.quantity);
     const [description, setDescription] = useState(props.description);
+    const [available, setAvailable] = useState(true);
     const id = props.id;
     const handleClick = async () => {
         try {
@@ -56,9 +57,11 @@ export default function EditProductModal(props: any) {
                         <label className="label cursor-pointer">
                             {/* need back-end to handle this */}
                             <span className="label-text text-slate-500">มีสินค้า</span>
-                            <input type="checkbox" className="toggle toggle-success" />
+                            <input type="checkbox" className="toggle toggle-success" checked={available} onClick={() => setAvailable(!available)} />
                         </label>
-                        <button className="btn btn-secondary" onClick={handleClick}>แก้ไขข้อมูล</button>
+                        <form method="dialog">
+                            <button className="btn btn-secondary" onClick={handleClick}>แก้ไขข้อมูล</button>
+                        </form>
                     </div>
                 </div>
             </dialog>

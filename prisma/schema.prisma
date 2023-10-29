@@ -20,6 +20,9 @@ model User {
 
   paid        Payhist[] @relation("sender")
   sold        Payhist[] @relation("receiver")
+
+  buy         Buyhist[] @relation("buying")
+  sell        Buyhist[] @relation("selling")
   
   credential  UserCredential?
 }
@@ -40,6 +43,7 @@ model Product {
   quantity    Int?
   userId      Int
   seller      User    @relation(fields: [userId], references: [id])
+  buy      Buyhist[]
 }
 
 model Payhist {
@@ -53,4 +57,18 @@ model Payhist {
 
   amount Int
   hash String @default("")
+}
+
+model Buyhist{
+  id          Int @id @default(autoincrement())
+  productId   Int
+  product     Product? @relation(fields: [productId], references: [id])
+
+  quantity    Int
+  amount      Int
+
+  buyerId     Int
+  buyeruser   User? @relation("buying", fields: [buyerId], references: [id])
+  sellerId    Int
+  selleruser  User? @relation("selling", fields: [sellerId], references: [id])
 }

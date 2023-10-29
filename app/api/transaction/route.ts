@@ -23,7 +23,7 @@ interface UpdatedDatum {
 
 const prisma = new PrismaClient();
 
-export async function block_hashing(
+async function block_hashing(
   last_transaction: any,
   fromUser: number,
   toUser: number

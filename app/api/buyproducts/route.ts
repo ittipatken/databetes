@@ -11,7 +11,7 @@ import { config } from "@/app/lib/auth";
 const prisma = new PrismaClient();
 export const dynamic = "force-dynamic";
 
-export async function block_hashing(
+async function block_hashing(
   last_transaction: any,
   fromUser: number,
   toUser: number

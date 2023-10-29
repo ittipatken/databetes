@@ -18,7 +18,7 @@ export async function GET() {
         email: session?.user.email
     }
   })
-  
+
   if(!user){
     return NextResponse.json({error: 'error'})
   }
@@ -33,5 +33,6 @@ export async function GET() {
       },
     ],
   });
+
   return NextResponse.json(data);
 }

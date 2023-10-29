@@ -60,7 +60,7 @@ export default function History() {
             Paid history
           </a>
         </div>
-        <BuyHistory/>
+        <BuyHistory />
 
         <div className="flex flex-wrap gap-4 m-3">
           {/* {userpaid.map((userpaid) => (
@@ -77,7 +77,7 @@ export default function History() {
             Recieve history
           </a>
         </div>
-        <ReceiveHistory/>
+        <ReceiveHistory />
         <div>
           <div className="flex flex-wrap gap-4 m-3">
             {/* {userrecieve.map((userrecieve) => (

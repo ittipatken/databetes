@@ -3,7 +3,7 @@
 
 //สำหรับ get จะไว้ดูว่าซื้ออะไรไปแล้วบ้าง ลองเปิดดูได้เลย
 
-import { type NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import { PrismaClient } from "@prisma/client";
 import { getServerSession } from "next-auth/next";
 import { config } from "@/app/lib/auth";

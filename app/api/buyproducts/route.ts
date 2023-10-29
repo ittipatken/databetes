@@ -10,12 +10,38 @@ const prisma = new PrismaClient();
 export const dynamic = "force-dynamic";
 
 export async function GET() {
-  const data = await prisma.product.findMany({
+  const session = await getServerSession(config);
+
+  if(!session?.user?.email){
+    return NextResponse.json('error');
+  }
+
+  const thisUser = await prisma.user.findUnique({
+    where: {
+      email: session?.user.email,
+    },
+    select: {
+      id: true
+    }
+  })
+  if(!thisUser){
+    return NextResponse.json({status: 'error'})
+  }
+
+  const data = await prisma.buyhist.findMany({
+    where: {
+      buyerId: thisUser.id
+    },
     orderBy: [
       {
         id: "desc",
       },
     ],
+    select: {
+      productName: true,
+      amount: true,
+      quantity: true,
+    }
   });
   return NextResponse.json(data);
 }
@@ -25,10 +51,9 @@ export async function POST(request: NextRequest) {
   const req = await request.json();
   const session = await getServerSession(config);
 
-  const name = req.name;
-  const price = req.price;
-  const quantity = req.quantity
-  const description = req.description
+  const id = req.productId;
+  const quantity = req.quantity;
+  const amount = req.amount
 
   if(!session || !session.user?.email){
     return NextResponse.json({status: 'error'})
@@ -39,61 +64,34 @@ export async function POST(request: NextRequest) {
       email: session.user.email
     }
   })
-  
-  const userId = Number(getUser?.id)
 
-  try {
-    const data = await prisma.product.create({
-      data: {
-        name,
-        price,
-        quantity,
-        description,
-        userId,
-      },
-    });
-
-    return NextResponse.json(data);
-  } catch (error) {
-    return NextResponse.json('error' + error)
-  }
-  
-}
-
-export async function PUT(request: NextRequest) {
-  //request - object'
-  const req = await request.json();
-  const session = await getServerSession(config);
-
-  const id = req.id;
-  const name = req.name;
-  const price = req.price;
-  const quantity = req.quantity
-  const description = req.description
-
-  if(!session || !session.user?.email){
-    return NextResponse.json({status: 'error'})
+  if(!getUser){
+    return NextResponse.json({error: 'error'})
   }
 
-  const getUser = await prisma.user.findUnique({
+  const getSeller = await prisma.product.findFirst({
     where: {
-      email: session.user.email
+      id: id,
+    },
+    select: {
+      userId: true,
+      name: true,
     }
   })
-  
-  const userId = Number(getUser?.id)
+
+  if(!getSeller){
+    return NextResponse.json({error: 'error'})
+  } 
 
   try {
-    const data = await prisma.product.update({
-      where: {
-        id
-      },
+    const data = await prisma.buyhist.create({
       data: {
-        name,
-        price,
+        productId: id,
+        productName: getSeller?.name ? getSeller.name : '',
         quantity,
-        description,
-        userId,
+        amount,
+        buyerId: getUser.id,
+        sellerId: getSeller.userId
       },
     });
 
@@ -103,3 +101,4 @@ export async function PUT(request: NextRequest) {
   }
   
 }
+

@@ -1,12 +1,24 @@
 "use client";
 
+import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 export default function ProductDisplayingCard(props: any) {
   const router = useRouter()
+  const [isBuying, setIsBuying] = useState(false);
+  const { data: session } = useSession();
   const handleClick = () => {
-    // buy product
+    if (session) {
+      setIsBuying(true);
+      setTimeout(() => {
+        setIsBuying(false);
+      }, 3000);
+    } else {
+      router.push('/auth/signin');
+    }
   }
+
 
   const handleDetail = (description: string) => {
     router.push(`/detail/${description}`)
@@ -22,6 +34,13 @@ export default function ProductDisplayingCard(props: any) {
           </div>
         </div>
       </div>
+      {isBuying &&
+        <div className="toast toast-end">
+          <div className="alert alert-success">
+            <span>สั่งซื้อเสร็จสิ้น</span>
+          </div>
+        </div>
+      }
     </>
   );
 }

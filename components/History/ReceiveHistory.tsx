@@ -34,26 +34,29 @@ export default function BuyHistory() {
 
   return (
     <>
-      <div className="overflow-x-auto">
+      <div className="overflow-x-auto m-5">
+        <div className="mt-4 md:mt-8 rounded text-center bg-emerald-600 px-12 py-3 text-sm font-medium text-white">
+          ประวัติรับเงิน
+        </div>
         <table className="table">
           {/* head */}
           <thead>
             <tr>
-            <th>ประวัติรับเงิน</th>
+              <th>ประวัติรับเงิน</th>
               <th>ชื่อสินค้า</th>
-              <th>จำนวน</th>
               <th>ราคา</th>
+              <th>จำนวน</th>
             </tr>
           </thead>
           <tbody>
-          {products.map((product) => (
-            <tr key={product.id} className="bg-base-200">
-              <th>{product.id}</th>
-              <td>{product.productName}</td>
-              <td>{product.amount}</td>
-              <td>{product.quantity}</td>
-            </tr>
-        ))}
+            {products.map((product) => (
+              <tr key={product.id} className="bg-base-200">
+                <th>{product.id}</th>
+                <td>{product.productName}</td>
+                <td>{product.amount}</td>
+                <td>{product.quantity}</td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>

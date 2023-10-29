@@ -53,14 +53,8 @@ export default function History() {
 
   if (session) {
     return (
-      <>
-        <div className="mt-4 md:mt-8">
-          <a className="inline-block rounded bg-red-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-red-800 focus:outline-none focus:ring focus:ring-yellow-400 ">
-            Paid history
-          </a>
-        </div>
+      <div className="max-w-6xl mx-auto">
         <BuyHistory />
-
         <div className="flex flex-wrap gap-4 m-3">
           {/* {userpaid.map((userpaid) => (
             <div key={userpaid.id}>
@@ -69,12 +63,6 @@ export default function History() {
               />
             </div>
           ))} */}
-        </div>
-
-        <div className="mt-4 md:mt-8">
-          <a className="inline-block rounded bg-emerald-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-emerald-700 focus:outline-none focus:ring focus:ring-yellow-400">
-            Recieve history
-          </a>
         </div>
         <ReceiveHistory />
         <div>
@@ -89,7 +77,7 @@ export default function History() {
             ))} */}
           </div>
         </div>
-      </>
+      </div>
     );
   } else
     return (

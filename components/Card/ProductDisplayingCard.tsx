@@ -30,7 +30,7 @@ export default function ProductDisplayingCard(props: any) {
           <h2 className="card-title">{props.name}</h2>
           <div className="card-actions flex flex-col">
             <button className="btn btn-outline" onClick={() => handleDetail(props.description)}>รายละเอียด</button>
-            <button className="btn btn-primary" onClick={handleClick}>ราคา {props.price} blub</button>
+            <button className="btn btn-primary" onClick={handleClick}>ราคา {props.price} Blub</button>
           </div>
         </div>
       </div>

@@ -8,6 +8,7 @@ export default function EditProductModal(props: any) {
     const [price, setPrice] = useState(props.price);
     const [quantity, setQuantity] = useState(props.quantity);
     const [description, setDescription] = useState(props.description);
+    const id = props.id;
     const { data: session } = useSession();
     const handleClick = async () => {
         try {
@@ -21,7 +22,7 @@ export default function EditProductModal(props: any) {
                     price,
                     quantity,
                     description,
-                    // doesn't work
+                    id,
                     userId: session?.user?.email,
                 }),
             });

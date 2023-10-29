@@ -1,8 +1,15 @@
 "use client";
 import { useEffect, useState } from "react";
 
+interface Products {
+  id: number
+  productName: string
+  amount: number
+  quantity: number
+}
+
 export default function BuyHistory() {
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState<Products[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {

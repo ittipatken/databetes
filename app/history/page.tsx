@@ -3,6 +3,7 @@
 import BuyHistoryBox from "@/components/History/BuyHistoryBox";
 import { useEffect, useState } from "react";
 import { useSession } from 'next-auth/react';
+import { Session } from "inspector";
 type ProductType = {
   id: number;
   name: string;
@@ -32,9 +33,11 @@ export default function History() {
       }
     };
     fetchData();
+    
   }, []);
 
-    const { data: session } = useSession();
+    const { data: session? } = useSession();
+   let currentuser = session?.map(session=>session.id)
     if(session){
         return(
             <>
@@ -61,6 +64,7 @@ export default function History() {
               price={test.price}
               description={test.description} />
           </div>))}
+          [Session]
       </div>
     </>
 

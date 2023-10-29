@@ -75,7 +75,7 @@ export async function GET() {
   let returnedData: any[] = []
 
   async function updateData(data: OriginalDatum[]): Promise<UpdatedDatum[]> {
-    const updatedData = await Promise.all(data.map(async (datum): Promise<UpdatedDatum> => {
+    await Promise.all(data.map(async (datum): Promise<UpdatedDatum> => {
       //console.log(datum)
       if (datum.toUser === null) {
         return { ...datum, toUser: 'unknown' };
@@ -118,7 +118,6 @@ export async function GET() {
 export async function POST(request: NextRequest) {
   try {
     const req = await request.json();
-
     const receiverEmail = req.receiver;
     const amount = req.amount;
 

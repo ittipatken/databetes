@@ -105,7 +105,7 @@ export default function History() {
 
    conclusion 
    1) "paid history"
-   2) blocks of paid transaction (showing คนรับเเละจนbulbที่โอน)
+   2) blocks of paid transaction (showing คนรับเเละจนBulbที่โอน)
    3) "recieve history"
-   4) blocks of recieve transaction (showing คนจ่ายเเละจนbulbที่โอน)
+   4) blocks of recieve transaction (showing คนจ่ายเเละจนBulbที่โอน)
 */

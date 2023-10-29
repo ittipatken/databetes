@@ -5,7 +5,7 @@ export default function Recievehistory(props: any) {
             <h2 className="font-bold text-xl underline underline-offset-4 decoration-4">จาก {props.name}</h2>
 
             <div className="card-actions justify-end">
-              <button className="btn text-black bg-white"> + {props.price} bulb
+              <button className="btn text-black bg-white"> + {props.price} Bulb
               </button>
             </div>
           </div>

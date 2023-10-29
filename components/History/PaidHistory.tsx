@@ -5,7 +5,7 @@ export default function Paidhistory(props: any) {
             <h2 className="font-bold text-xl underline underline-offset-4 decoration-4">ให้ {props.name}</h2>
   
             <div className="card-actions justify-end">
-              <button className="btn bg-black text-white"> - {props.price} bulb
+              <button className="btn bg-black text-white"> - {props.price} Bulb
               </button>
             </div>
           </div>

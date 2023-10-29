@@ -23,7 +23,6 @@ export default function EditProductModal(props: any) {
                     quantity,
                     description,
                     id,
-                    userId: session?.user?.email,
                 }),
             });
 

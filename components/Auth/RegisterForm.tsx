@@ -16,7 +16,7 @@ export default function SigninForm() {
         if (password === passwordConfirmation) {
             setPasswordMatched(true)
             try {
-                const res = await fetch("/api/products", {
+                const res = await fetch("/api/account", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
@@ -32,6 +32,12 @@ export default function SigninForm() {
 
                 if (res.ok) {
                     console.log(res)
+                    setEmail('');
+                    setName('');
+                    setLastname('');
+                    setChulaId('');
+                    setPassword('');
+                    setPasswordConfirmation('');
                 }
             } catch (error) {
                 console.log(error);

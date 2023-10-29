@@ -1,6 +1,8 @@
 //ส่งมาว่าซื้ออะไร กี่ชิ้น เป็นเงินกี่ bulb
 //{productId: 1, quantity: 2, amount: 30}
 
+//สำหรับ get จะไว้ดูว่าซื้ออะไรไปแล้วบ้าง ลองเปิดดูได้เลย
+
 import { type NextRequest, NextResponse } from "next/server";
 import { PrismaClient } from "@prisma/client";
 import { getServerSession } from "next-auth/next";

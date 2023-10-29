@@ -38,6 +38,7 @@ export default function Home() {
         {products.map((product) => (
           <div key={product.id}>
             <ProductDisplayingCard
+              id={product.id}
               name={product.name}
               description={product.description}
               price={product.price}

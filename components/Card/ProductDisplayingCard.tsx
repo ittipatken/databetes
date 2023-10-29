@@ -8,17 +8,36 @@ export default function ProductDisplayingCard(props: any) {
   const router = useRouter()
   const [isBuying, setIsBuying] = useState(false);
   const { data: session } = useSession();
-  const handleClick = () => {
+  const quantity = 1
+  const handleClick = async () => {
     if (session) {
       setIsBuying(true);
       setTimeout(() => {
         setIsBuying(false);
       }, 3000);
+      try {
+        const res = await fetch("/api/buyproducts", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            id: props.id,
+            quantity,
+            amount: props.price * quantity,
+          }),
+        });
+
+        if (res.ok) {
+          console.log(res);
+        }
+      } catch (error) {
+        console.log(error);
+      }
     } else {
       router.push('/auth/signin');
     }
   }
-
 
   const handleDetail = (description: string) => {
     router.push(`/detail/${description}`)

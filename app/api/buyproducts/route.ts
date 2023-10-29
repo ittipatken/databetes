@@ -52,7 +52,6 @@ export async function GET() {
 export async function POST(request: NextRequest) {
   //request - object'
   const req = await request.json();
-  console.log(req)
   const session = await getServerSession(config);
 
   const id = req.productId;
@@ -69,19 +68,15 @@ export async function POST(request: NextRequest) {
     }
   })
 
-  console.log('getUser')
-  console.log(getUser)
-
   if(!getUser){
     return NextResponse.json({error: 'error'})
   }
   console.log(getUser.amount)
 
   if(amount > getUser.amount){
-    console.log('not enough money')
     return NextResponse.json({error: 'not enough money'})
   }
-
+  
   const updateUser = await prisma.user.update({
     where: {
       id: getUser.id
@@ -90,9 +85,6 @@ export async function POST(request: NextRequest) {
       amount: getUser.amount - amount
     }
   })
-
-  console.log('updateUser')
-  console.log(updateUser)
 
   const getSeller = await prisma.product.findUnique({
     where: {
@@ -103,7 +95,7 @@ export async function POST(request: NextRequest) {
       name: true,
     }
   })
-
+  
   if(!getSeller){
     return NextResponse.json({error: 'error'})
   } 
@@ -118,7 +110,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({error: 'error'})
   }
 
-  await prisma.user.update({
+  const updateSeller = await prisma.user.update({
     where: {
       id: seller.id
     },

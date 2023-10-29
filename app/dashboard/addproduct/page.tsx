@@ -47,88 +47,70 @@ export default function AddProduct() {
 
   return (
     <>
-      {/* <div className="bg-gradient-to-r from-yellow-300 to-rose-200">
-        <header>
-          <div
-            className=" bg-gradient-to-r from-yellow-300 to-rose-200 justify-end"
-            style={{ display: "flex", justifyContent: "flex-end" }}
-          >
-            <nav>
-              <ul
-                style={{
-                  display: "flex",
-                  listStyle: "none",
-                  padding: 0,
-                  margin: 0,
-                  gap: "2px",
-                }}
-              >
-                <li style={{ marginRight: "1px" }}>
-                  <GoWallet />
-                </li>
-                <li>
-                  <Buttontohome />
-                </li>
-              </ul>
-            </nav>
+      <div className="min-h-screen">
+        <div className="hero-content flex-col mx-auto">
+          <div className="text-center lg:text-left">
+            <h1 className="text-center text-3xl mt-3">เพิ่มสินค้า</h1>
           </div>
-        </header>
-      </div> */}
-      <form onSubmit={handleFormSubmit}>
-        <div className="flex flex-col space-y-2 w-96 mx-auto mt-6">
-          <div>
-            <p>ชื่อสินค้า</p>
-            <input
-              type="text"
-              id="name"
-              name="ชื่อสินค้า"
-              placeholder="ชื่อสินค้า"
-              className="input input-bordered input-accent w-full"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-            />
+          <div className="card flex-shrink-0 w-full max-w-md shadow-2xl bg-base-100">
+            <form onSubmit={handleFormSubmit} className="card-body">
+              <div className="flex flex-col space-y-2 w-96 mx-auto mt-6">
+                <div>
+                  <p>ชื่อสินค้า</p>
+                  <input
+                    type="text"
+                    id="name"
+                    name="ชื่อสินค้า"
+                    placeholder="ชื่อสินค้า"
+                    className="input input-bordered input-accent w-full"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                  />
+                </div>
+                <div>
+                  <p>ราคา</p>
+                  <input
+                    type="number"
+                    id="price"
+                    name="ราคา"
+                    placeholder="ราคา"
+                    className="input input-bordered input-accent w-full"
+                    value={price}
+                    onChange={(e) => setPrice(Number(e.target.value))}
+                  />
+                </div>
+                <div>
+                  <p>ปริมาณ</p>
+                  <input
+                    type="number"
+                    id="quantity"
+                    name="ปริมาณ"
+                    placeholder="ปริมาณ"
+                    className="input input-bordered input-accent w-full"
+                    value={quantity}
+                    onChange={(e) => setQuantity(Number(e.target.value))}
+                  />
+                </div>
+                <div>
+                  <p>คำอธิบายเพิ่มเติม</p>
+                  <input
+                    type="text"
+                    id="description"
+                    name="คำอธิบายเพิ่มเติม"
+                    placeholder="คำอธิบายเพิ่มเติม"
+                    className="input input-bordered input-accent w-full"
+                    value={description}
+                    onChange={(e) => setDescription(e.target.value)}
+                  />
+                </div>
+                <button type="submit" className="btn btn-primary">
+                  ส่ง
+                </button>
+              </div>
+            </form>
           </div>
-          <div>
-            <p>ราคา</p>
-            <input
-              type="number"
-              id="price"
-              name="ราคา"
-              placeholder="ราคา"
-              className="input input-bordered input-accent w-full"
-              value={price}
-              onChange={(e) => setPrice(Number(e.target.value))}
-            />
-          </div>
-          <div>
-            <p>ปริมาณ</p>
-            <input
-              type="number"
-              id="quantity"
-              name="ปริมาณ"
-              placeholder="ปริมาณ"
-              className="input input-bordered input-accent w-full"
-              value={quantity}
-              onChange={(e) => setQuantity(Number(e.target.value))}
-            />
-          </div>
-          <div>
-            <p>คำอธิบายเพิ่มเติม</p>
-            <input
-              type="text"
-              id="description"
-              name="คำอธิบายเพิ่มเติม"
-              placeholder="คำอธิบายเพิ่มเติม"
-              className="input input-bordered input-accent w-full"
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
-            />
-          </div>
-          <button type="submit" className="btn btn-primary">
-            ส่ง
-          </button>
         </div>
-      </form>
+      </div >
     </>
   );
 }

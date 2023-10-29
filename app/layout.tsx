@@ -3,6 +3,7 @@ import { Kanit } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Home/Header";
 import { SessionProvider } from "@/components/Auth/SessionProvider";
+import Footer from "@/components/Home/Footer";
 
 const kanit = Kanit({ weight: ["400", "700"], subsets: ["thai"] });
 
@@ -22,6 +23,7 @@ export default function RootLayout({
         <SessionProvider>
           <Header />
           {children}
+          <Footer />
         </SessionProvider>
       </body>
     </html>

@@ -55,28 +55,7 @@ export default function History() {
     return (
       <div className="max-w-6xl mx-auto">
         <BuyHistory />
-        <div className="flex flex-wrap gap-4 m-3">
-          {/* {userpaid.map((userpaid) => (
-            <div key={userpaid.id}>
-              <PaidHistory name={userpaid.fromUser}
-                price={userpaid.amount}
-              />
-            </div>
-          ))} */}
-        </div>
         <ReceiveHistory />
-        <div>
-          <div className="flex flex-wrap gap-4 m-3">
-            {/* {userrecieve.map((userrecieve) => (
-              <div key={userrecieve.id}>
-                <PaidHistory
-                  name={userrecieve.toUser}
-                  price={userrecieve.amount}
-                />
-              </div>
-            ))} */}
-          </div>
-        </div>
       </div>
     );
   } else

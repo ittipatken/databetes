@@ -35,12 +35,12 @@ export default function BuyHistory() {
   return (
     <>
       <div className="overflow-x-auto m-5">
-        <div className="mt-4 md:mt-8 rounded text-center bg-emerald-600 px-12 py-3 text-sm font-medium text-white">
+        <div className="mt-4 md:mt-8 rounded text-center bg-emerald-600 px-12 py-3 text-lg font-medium text-white">
           ประวัติรับเงิน
         </div>
         <table className="table">
           {/* head */}
-          <thead>
+          <thead className="text-base">
             <tr>
               <th>ประวัติรับเงิน</th>
               <th>ชื่อสินค้า</th>

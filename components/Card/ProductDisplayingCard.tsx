@@ -7,10 +7,12 @@ import { useState } from "react";
 export default function ProductDisplayingCard(props: any) {
   const router = useRouter()
   const [isBuying, setIsBuying] = useState(false);
+  const [statusText, setStatusText] = useState('');
   const { data: session } = useSession();
   const quantity = 1
   const handleClick = async () => {
     if (session) {
+      setStatusText('กำลังซื้อ')
       setIsBuying(true);
       setTimeout(() => {
         setIsBuying(false);
@@ -29,9 +31,11 @@ export default function ProductDisplayingCard(props: any) {
         });
 
         if (res.ok) {
+          setStatusText('สั่งซื้อสำเร็จ')
           console.log(res);
         }
       } catch (error) {
+        setStatusText('สั่งซื้อไม่สำเร็จ')
         console.log(error);
       }
     } else {
@@ -55,9 +59,16 @@ export default function ProductDisplayingCard(props: any) {
       </div>
       {isBuying &&
         <div className="toast toast-end">
-          <div className="alert alert-success">
-            <span>สั่งซื้อเสร็จสิ้น</span>
-          </div>
+          {statusText === 'สั่งซื้อไม่สำเร็จ' ?
+            <div className="alert alert-error">
+              <span>{statusText}</span>
+            </div>
+            :
+            <div className="alert alert-success">
+               <span>{statusText}</span>
+            </div>
+          }
+
         </div>
       }
     </>

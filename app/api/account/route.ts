@@ -36,7 +36,7 @@ export async function POST(request: NextRequest) {
       email,
       name,
       lastname,
-      amount: 2000,
+      amount: 10000,
     }
   });
 

@@ -31,7 +31,7 @@ export default function EditProduct() {
       }
     };
     fetchData();
-  }, []);
+  }, [products]);
   return (
     <>
       <div className="flex flex-wrap gap-2 m-4">

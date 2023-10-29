@@ -42,7 +42,7 @@ export default function Home() {
     <>
       {session ? (
         <div className="flex flex-wrap m-4">
-          <WalletBox name={accounts?.name} amount={accounts?.amount} />
+          <WalletBox name={accounts?.name} lastname = {accounts?.lastname} amount={accounts?.amount} />
         </div>
       ) : (
         <SigninForm />

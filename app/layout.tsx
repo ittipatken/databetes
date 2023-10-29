@@ -21,9 +21,13 @@ export default function RootLayout({
     <html lang="en">
       <body className={kanit.className}>
         <SessionProvider>
-          <Header />
-          {children}
-          <Footer />
+          <div className="flex flex-col h-screen justify-between">
+            <div>
+              <Header />
+              {children}
+            </div>
+            <Footer />
+          </div>
         </SessionProvider>
       </body>
     </html>

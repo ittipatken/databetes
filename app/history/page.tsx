@@ -1,5 +1,3 @@
-// need to be discussed
-
 "use client";
 
 import { useEffect, useState } from "react";
@@ -7,6 +5,7 @@ import { useSession } from "next-auth/react";
 import SigninForm from "@/components/Auth/RegisterForm";
 import PaidHistory from "@/components/History/PaidHistory";
 import BuyHistory from "@/components/History/BuyHistory";
+import ReceiveHistory from "@/components/History/ReceiveHistory";
 
 interface TransactiondataType {
   amount: number;
@@ -78,6 +77,7 @@ export default function History() {
             Recieve history
           </a>
         </div>
+        <ReceiveHistory/>
         <div>
           <div className="flex flex-wrap gap-4 m-3">
             {/* {userrecieve.map((userrecieve) => (

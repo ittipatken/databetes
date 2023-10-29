@@ -65,9 +65,25 @@ export async function POST(request: NextRequest) {
     }
   })
 
+
+
   if(!getUser){
     return NextResponse.json({error: 'error'})
   }
+
+  if(amount > getUser.amount){
+    return NextResponse.json({error: 'not enough money'})
+  }
+
+  await prisma.user.update({
+    where: {
+      id: id
+    },
+    data: {
+      amount: getUser.amount - amount
+    }
+  })
+
 
   const getSeller = await prisma.product.findFirst({
     where: {
@@ -79,9 +95,30 @@ export async function POST(request: NextRequest) {
     }
   })
 
+
+
   if(!getSeller){
     return NextResponse.json({error: 'error'})
   } 
+
+  const seller = await prisma.user.findFirst({
+    where: {
+      id: getSeller.userId
+    }
+  })
+
+  if(!seller){
+    return NextResponse.json({error: 'error'})
+  }
+
+  await prisma.user.update({
+    where: {
+      id: getSeller.userId
+    },
+    data: {
+      amount: seller.amount + amount,
+    }
+  })
 
   try {
     const data = await prisma.buyhist.create({

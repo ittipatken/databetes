@@ -30,8 +30,6 @@ export default function SigninForm() {
                         <p>Chula ID</p>
                         <input
                             type="number"
-                            id="name"
-                            name="Chula ID"
                             placeholder="Chula ID"
                             className="input input-bordered input-accent w-full"
                             value={chulaId}
@@ -41,9 +39,7 @@ export default function SigninForm() {
                     <div>
                         <p>รหัสผ่าน</p>
                         <input
-                            type="text"
-                            id="password"
-                            name="รหัสผ่าน"
+                            type="password"
                             placeholder="รหัสผ่าน"
                             className="input input-bordered input-accent w-full"
                             value={password}

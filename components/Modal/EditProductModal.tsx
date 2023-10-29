@@ -1,6 +1,5 @@
 "use client";
 
-import { useSession } from "next-auth/react";
 import { useState } from "react";
 
 export default function EditProductModal(props: any) {
@@ -9,7 +8,6 @@ export default function EditProductModal(props: any) {
     const [quantity, setQuantity] = useState(props.quantity);
     const [description, setDescription] = useState(props.description);
     const id = props.id;
-    const { data: session } = useSession();
     const handleClick = async () => {
         try {
             const response = await fetch('/api/products', {

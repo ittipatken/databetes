@@ -17,7 +17,7 @@ export default function EditProduct() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("/api/products", {
+        const response = await fetch("/api/editproducts", {
           method: "GET",
           headers: {
             "Content-Type": "application/json",

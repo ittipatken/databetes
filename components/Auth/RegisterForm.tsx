@@ -1,5 +1,6 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
 export default function SigninForm() {
@@ -10,6 +11,7 @@ export default function SigninForm() {
     const [password, setPassword] = useState('');
     const [passwordConfirmation, setPasswordConfirmation] = useState('');
     const [passowordMatched, setPasswordMatched] = useState(true);
+    const router = useRouter()
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -38,6 +40,7 @@ export default function SigninForm() {
                     setChulaId('');
                     setPassword('');
                     setPasswordConfirmation('');
+                    router.push('/auth/signin');
                 }
             } catch (error) {
                 console.log(error);

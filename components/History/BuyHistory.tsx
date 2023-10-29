@@ -34,26 +34,26 @@ export default function BuyHistory() {
 
   return (
     <>
-      <div className="overflow-x-auto">
+      <div className="overflow-x-auto m-5">
         <table className="table">
           {/* head */}
           <thead>
             <tr>
-              <th></th>
+              <th>ประวัติจ่ายเงิน</th>
               <th>ชื่อสินค้า</th>
               <th>จำนวน</th>
               <th>ราคา</th>
             </tr>
           </thead>
           <tbody>
-          {products.map((product) => (
-            <tr key={product.id} className="bg-base-200">
-              <th>{product.id}</th>
-              <td>{product.productName}</td>
-              <td>{product.amount}</td>
-              <td>{product.quantity}</td>
-            </tr>
-        ))}
+            {products.map((product) => (
+              <tr key={product.id} className="bg-base-200">
+                <th>{product.id}</th>
+                <td>{product.productName}</td>
+                <td>{product.amount}</td>
+                <td>{product.quantity}</td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>

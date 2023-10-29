@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 import SigninForm from "@/components/Auth/RegisterForm";
-import PaidHistory from "@/components/History/PaidHistory";
 import BuyHistory from "@/components/History/BuyHistory";
 import ReceiveHistory from "@/components/History/ReceiveHistory";
 

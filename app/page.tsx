@@ -31,7 +31,7 @@ export default function Home() {
       }
     };
     fetchData();
-  }, []);
+  }, [products]);
   return (
     <div className="m-w-screen-md xl:w-4/5 mx-auto mt-4">
       <h1 className="ml-8 font-bold text-5xl">รายการสินค้า</h1>

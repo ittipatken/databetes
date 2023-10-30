@@ -33,7 +33,7 @@ export default function EditProduct() {
     fetchData();
   }, [products]);
   return (
-    <div className="m-w-screen-md w-3/4 mx-auto mt-4">
+    <div className="m-w-screen-md xl:w-3/4 mx-auto mt-4">
       <h1 className="ml-8 font-bold text-5xl">แก้ไขรายการสินค้า</h1>
       <div className="flex flex-wrap gap-2 m-4">
         {products.map((product) => (

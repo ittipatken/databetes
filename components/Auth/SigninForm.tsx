@@ -30,7 +30,7 @@ export default function SigninForm() {
                     </div>
                     <div className="card flex-shrink-0 w-full max-w-md shadow-2xl bg-base-100">
                     <form onSubmit={handleSubmit} className="card-body">
-                        <div className="flex flex-col space-y-2 w-96">
+                        <div className="flex flex-col space-y-2">
                             <div>
                                 <p>Chula ID</p>
                                 <input

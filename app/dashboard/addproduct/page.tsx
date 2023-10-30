@@ -54,7 +54,7 @@ export default function AddProduct() {
           </div>
           <div className="card flex-shrink-0 w-full max-w-md shadow-2xl bg-base-100">
             <form onSubmit={handleFormSubmit} className="card-body">
-              <div className="flex flex-col space-y-2 w-96 mx-auto mt-6">
+              <div className="flex flex-col space-y-2 w-full mx-auto mt-6">
                 <div>
                   <p>ชื่อสินค้า</p>
                   <input

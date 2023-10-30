@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function EditProductModal(props: any) {
     const [name, setName] = useState(props.name);
@@ -36,6 +36,14 @@ export default function EditProductModal(props: any) {
             // Handle any network or request errors here.
         }
     }
+    useEffect(() => {
+        if (available === false) {
+            setQuantity(0);
+        }
+        if (available === true && quantity === 0) {
+            setQuantity(1);
+        }
+    }, [available])
     return (
         <>
             <dialog id={"model_" + props.id} className="modal">

@@ -111,6 +111,7 @@ export async function POST(request: NextRequest) {
     select: {
       userId: true,
       name: true,
+      quantity: true,
     }
   })
   
@@ -221,6 +222,15 @@ export async function POST(request: NextRequest) {
         },
         data: {
           amount: receiver.amount + amount
+        }
+      })
+
+      const updateProduct = await prisma.product.update({
+        where: {
+          id: id,
+        },
+        data: {
+          quantity: quantity-1
         }
       })
   

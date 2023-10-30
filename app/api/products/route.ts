@@ -16,6 +16,12 @@ export async function GET() {
           id: "desc",
         },
       ],
+      where: {
+        NOT: {
+          quantity: 0,
+        },
+    
+      }
     });
     return NextResponse.json(data);
   }
@@ -28,18 +34,27 @@ export async function GET() {
     })
 
     const data = await prisma.product.findMany({
-      orderBy: [
-        {
-          id: "desc",
-        },
-      ],
+      orderBy: {
+        id: 'desc',
+      },
       where: {
-        NOT: {
-          userId: user?.id
-        },
-    
-      }
+        AND: [
+          {
+            userId: {
+              not: user?.id,
+            },
+          },
+          {
+            quantity: {
+              not: 0,
+            },
+          },
+        ],
+      },
     });
+
+    return NextResponse.json(data);
+    
     return NextResponse.json(data);
   }
 }

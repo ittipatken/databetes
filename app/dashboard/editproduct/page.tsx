@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from "react";
 import EditProductCard from "@/components/Card/EditProductCard";
+import { useSession } from "next-auth/react";
+import SigninForm from "@/components/Auth/SigninForm";
 
 type ProductType = {
   id: number;
@@ -13,7 +15,7 @@ type ProductType = {
 
 export default function EditProduct() {
   const [products, setProducts] = useState<ProductType[]>([]);
-
+  const { data: session } = useSession();
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -32,6 +34,7 @@ export default function EditProduct() {
     };
     fetchData();
   }, [products]);
+  if (session) {
   return (
     <div className="m-w-screen-md xl:w-3/4 mx-auto mt-4">
       <h1 className="ml-8 font-bold text-5xl">แก้ไขรายการสินค้า</h1>
@@ -51,4 +54,9 @@ export default function EditProduct() {
       </div>
     </div>
   );
+} return (
+  <>
+    <SigninForm />
+  </>
+)
 }

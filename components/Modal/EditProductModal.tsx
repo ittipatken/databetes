@@ -37,13 +37,18 @@ export default function EditProductModal(props: any) {
         }
     }
     useEffect(() => {
+        if (props.quantity === 0) {
+            setAvailable(false);
+        }
+    }, []);
+    useEffect(() => {
         if (available === false) {
             setQuantity(0);
         }
         if (available === true && quantity === 0) {
             setQuantity(1);
         }
-    }, [available])
+    }, [available]);
     return (
         <>
             <dialog id={"model_" + props.id} className="modal">

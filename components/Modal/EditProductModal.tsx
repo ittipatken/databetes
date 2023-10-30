@@ -47,13 +47,13 @@ export default function EditProductModal(props: any) {
                     <div className="flex flex-col space-y-3">
                         <h1 className="text-lg">แก้ไขสินค้า</h1>
                         <p className="text-slate-500">ชื่อสินค้า</p>
-                        <input type="text" placeholder="ชื่อสินค้า" className="input w-full" value={name} onChange={(e) => setName(e.target.value)} />
+                        <input type="text" placeholder="ชื่อสินค้า" className="input w-full border-accent" value={name} onChange={(e) => setName(e.target.value)} />
                         <p className="text-slate-500">ราคา</p>
-                        <input type="number" placeholder="ราคา" className="input w-full" value={price} onChange={(e) => setPrice(Number(e.target.value))} />
+                        <input type="number" placeholder="ราคา" className="input w-full border-accent" value={price} onChange={(e) => setPrice(Number(e.target.value))} />
                         <p className="text-slate-500">จำนวน</p>
-                        <input type="number" placeholder="จำนวน" className="input w-full" value={quantity} onChange={(e) => setQuantity(Number(e.target.value))} />
+                        <input type="number" placeholder="จำนวน" className="input w-full border-accent" value={quantity} onChange={(e) => setQuantity(Number(e.target.value))} />
                         <p className="text-slate-500">รายละเอียด</p>
-                        <input type="text" placeholder="รายละเอียด" className="input w-full" value={description} onChange={(e) => setDescription(e.target.value)} />
+                        <input type="text" placeholder="รายละเอียด" className="input w-full border-accent" value={description} onChange={(e) => setDescription(e.target.value)} />
                         <label className="label cursor-pointer">
                             {/* need back-end to handle this */}
                             <span className="label-text text-slate-500">มีสินค้า</span>

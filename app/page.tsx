@@ -36,16 +36,17 @@ export default function Home() {
     <div className="m-w-screen-md xl:w-4/5 mx-auto mt-4">
       <h1 className="ml-8 font-bold text-5xl">รายการสินค้า</h1>
       <div className="flex flex-wrap gap-2 m-4">
-        {products.map((product) => (
-          <div key={product.id}>
-            <ProductDisplayingCard
-              id={product.id}
-              name={product.name}
-              description={product.description}
-              price={product.price}
-            />
-          </div>
-        ))}
+        {products.length !== 0 &&
+          products.map((product) => (
+            <div key={product.id}>
+              <ProductDisplayingCard
+                id={product.id}
+                name={product.name}
+                description={product.description}
+                price={product.price}
+              />
+            </div>
+          ))}
       </div>
     </div>
   );

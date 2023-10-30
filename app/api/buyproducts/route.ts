@@ -206,7 +206,8 @@ export async function POST(request: NextRequest) {
           hash: hash,
         },
       });
-  
+
+      /*
       await prisma.user.update({
         where: {
           email: session.user.email,
@@ -215,6 +216,7 @@ export async function POST(request: NextRequest) {
           amount: user.amount - amount
         }
       })
+      
   
       await prisma.user.update({
         where: {
@@ -224,7 +226,7 @@ export async function POST(request: NextRequest) {
           amount: receiver.amount + amount
         }
       })
-
+*/
       if(!getSeller.quantity){
         return NextResponse.json({error: 'error'})
       }

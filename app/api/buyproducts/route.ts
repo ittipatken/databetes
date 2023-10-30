@@ -225,12 +225,17 @@ export async function POST(request: NextRequest) {
         }
       })
 
+      if(!getSeller.quantity){
+        return NextResponse.json({error: 'error'})
+      }
+
+
       const updateProduct = await prisma.product.update({
         where: {
           id: id,
         },
         data: {
-          quantity: quantity-1
+          quantity: (getSeller.quantity - 1)
         }
       })
   

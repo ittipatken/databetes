@@ -56,8 +56,7 @@ export default function ProductDisplayingCard(props: any) {
           <h2 className="card-title">{props.name}</h2>
           <div className="card-actions flex flex-col">
             <button className="btn btn-ghost" onClick={() => handleDetail(props.description)}>รายละเอียด <InformationCircleIcon className="h-5" /></button>
-            <button className="btn btn-primary" onClick={handleClick}>ราคา {props.price} Blub</button>
-            
+            <button className="btn btn-primary text-lg" onClick={handleClick}>{props.price} Blub</button>
           </div>
         </div>
       </div>

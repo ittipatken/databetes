@@ -17,7 +17,7 @@ export default function EditProductCard(props: any) {
                     <h2 className="card-title">{props.name}</h2>
                     <p>{props.description}</p>
                     <div className="card-actions">
-                        <button className="btn btn-secondary" onClick={handleClick}>แก้ไข</button>
+                        <button className="btn btn-secondary text-lg" onClick={handleClick}>แก้ไข</button>
                     </div>
                 </div>
             </div>

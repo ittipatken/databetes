@@ -7,14 +7,41 @@ const prisma = new PrismaClient();
 export const dynamic = "force-dynamic";
 
 export async function GET() {
-  const data = await prisma.product.findMany({
-    orderBy: [
-      {
-        id: "desc",
-      },
-    ],
-  });
-  return NextResponse.json(data);
+  const session = await getServerSession(config);
+
+  if (!session) {
+    const data = await prisma.product.findMany({
+      orderBy: [
+        {
+          id: "desc",
+        },
+      ],
+    });
+    return NextResponse.json(data);
+  }
+
+  if (session.user?.email) {
+    const user = await prisma.user.findUnique({
+      where: {
+        email: session.user.email
+      }
+    })
+
+    const data = await prisma.product.findMany({
+      orderBy: [
+        {
+          id: "desc",
+        },
+      ],
+      where: {
+        NOT: {
+          userId: user?.id
+        },
+    
+      }
+    });
+    return NextResponse.json(data);
+  }
 }
 
 export async function POST(request: NextRequest) {
@@ -24,20 +51,20 @@ export async function POST(request: NextRequest) {
 
   const name = req.name;
   const price = req.price;
-  const quantity = req.quantity
-  const description = req.description
+  const quantity = req.quantity;
+  const description = req.description;
 
-  if(!session || !session.user?.email){
-    return NextResponse.json({status: 'error'})
+  if (!session || !session.user?.email) {
+    return NextResponse.json({ status: "error" });
   }
 
   const getUser = await prisma.user.findUnique({
     where: {
-      email: session.user.email
-    }
-  })
-  
-  const userId = Number(getUser?.id)
+      email: session.user.email,
+    },
+  });
+
+  const userId = Number(getUser?.id);
 
   try {
     const data = await prisma.product.create({
@@ -52,9 +79,8 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json(data);
   } catch (error) {
-    return NextResponse.json('error' + error)
+    return NextResponse.json("error" + error);
   }
-  
 }
 
 export async function PUT(request: NextRequest) {
@@ -65,25 +91,25 @@ export async function PUT(request: NextRequest) {
   const id = req.id;
   const name = req.name;
   const price = req.price;
-  const quantity = req.quantity
-  const description = req.description
+  const quantity = req.quantity;
+  const description = req.description;
 
-  if(!session || !session.user?.email){
-    return NextResponse.json({status: 'error'})
+  if (!session || !session.user?.email) {
+    return NextResponse.json({ status: "error" });
   }
 
   const getUser = await prisma.user.findUnique({
     where: {
-      email: session.user.email
-    }
-  })
-  
-  const userId = Number(getUser?.id)
+      email: session.user.email,
+    },
+  });
+
+  const userId = Number(getUser?.id);
 
   try {
     const data = await prisma.product.update({
       where: {
-        id
+        id,
       },
       data: {
         name,
@@ -96,7 +122,6 @@ export async function PUT(request: NextRequest) {
 
     return NextResponse.json(data);
   } catch (error) {
-    return NextResponse.json('error' + error)
+    return NextResponse.json("error" + error);
   }
-  
 }
